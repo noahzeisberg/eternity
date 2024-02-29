@@ -13,6 +13,8 @@
 </template>
 
 <script setup>
+import {useFetch} from "#app";
+
 const student1 = ref("")
 const student2 = ref("")
 
@@ -36,7 +38,35 @@ function getCurrentWeekOfYear() {
 }
 
 async function getStudents() {
-  const { students } = await $fetch("/api/students")
+  let students = [
+    "Dominik",
+    "Hussain",
+    "Halil",
+    "Simon",
+    "Daniel",
+    "Massih",
+    "Lea",
+    "Manuel",
+    "Mikail",
+    "Asia",
+    "Elina",
+    "Carolina",
+    "Lana",
+    "Luca",
+    "Lorena",
+    "Linus",
+    "Enrico",
+    "Felix",
+    "Laurin",
+    "Emina",
+    "Naz Fatma",
+    "Jannik",
+    "Christian",
+    "Elias",
+    "Jeremy",
+    "Mia",
+    "Noah"
+  ]
   return { students, length: students.length }
 }
 </script>
