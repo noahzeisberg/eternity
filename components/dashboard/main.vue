@@ -2,14 +2,19 @@
   <section class="flex flex-col justify-center items-center bg-zinc-100">
     <div class="max-w-xl w-full p-6 pb-0">
       <TabGroup>
-        <TabList class="flex justify-stretch gap-3 w-full pb-6">
+        <TabList class="flex justify-stretch gap-3 w-full pb-6 overflow-y-scroll">
           <Tab class="bg-zinc-50 rounded-lg w-full shadow px-6 py-2">Unterricht</Tab>
+          <Tab class="bg-zinc-50 rounded-lg w-full shadow px-6 py-2">Hausaufgaben</Tab>
           <Tab class="bg-zinc-50 rounded-lg w-full shadow px-6 py-2">Schüler</Tab>
           <Tab class="bg-zinc-50 rounded-lg w-full shadow px-6 py-2">Dienste</Tab>
         </TabList>
         <TabPanels>
           <TabPanel>
             <DashboardPageLesson/>
+          </TabPanel>
+
+          <TabPanel>
+            <DashboardPageHomework/>
           </TabPanel>
 
           <TabPanel>
