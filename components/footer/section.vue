@@ -1,5 +1,5 @@
 <template>
-  <footer class="flex flex-col justify-center items-center gap-6 w-full py-24">
+  <footer class="flex flex-col justify-center items-center gap-6 w-full py-12">
     <div class="flex gap-6">
       <FooterLink to="/">Übersicht</FooterLink>
       <FooterLink to="/">About</FooterLink>
