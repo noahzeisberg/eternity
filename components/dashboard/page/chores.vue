@@ -12,7 +12,7 @@
   </div>
 </template>
 
-<script setup lang="ts">
+<script setup>
 const student1 = ref("")
 const student2 = ref("")
 
@@ -30,7 +30,7 @@ student2.value = students[midIndex % studentCount]
 function getCurrentWeekOfYear() {
   const now = new Date()
   const startOfYear = new Date(now.getFullYear(), 0, 0)
-  const diff = Number(now) - Number(startOfYear)
+  const diff = now - startOfYear
   const oneWeekInMillis = 1000 * 60 * 60 * 24 * 7
   return Math.floor(diff / oneWeekInMillis)
 }
