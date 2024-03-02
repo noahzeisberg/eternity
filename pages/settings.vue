@@ -7,7 +7,7 @@
         </template>
         <AboutProfile display-name="Noah Zeisberg" task="Core Developer" username="noahzeisberg" github/>
         <AboutProfile display-name="Luca Peter" task="Datenverarbeitung & Ideen" username="lucaonfyre" github/>
-        <AboutProfile display-name="Dominik Bauer" task="Datenverarbeitung" username="medomi106" github/>
+        <AboutProfile display-name="Dominik Bauer" task="Datenverarbeitung & Ideen" username="medomi106" github/>
         <AboutProfile display-name="Massih Haschemi" task="Ideen & Maintenance" username="massih"/>
         <AboutProfile display-name="Elias Wardak" task="Ideen" username="elias795" github/>
       </Card>
