@@ -1,12 +1,12 @@
 <template>
   <UnityPage page-title="Stundenplan">
     <TabGroup :default-index="getCurrentDayOfWeek()">
-      <TabList class="flex justify-stretch gap-3 w-full overflow-y-scroll p-3">
-        <Tab class="bg-zinc-50 rounded-lg w-full shadow px-6 py-2 ui-selected:bg-blue-50 ui-selected:text-blue-700">Montag</Tab>
-        <Tab class="bg-zinc-50 rounded-lg w-full shadow px-6 py-2 ui-selected:bg-blue-50 ui-selected:text-blue-700">Dienstag</Tab>
-        <Tab class="bg-zinc-50 rounded-lg w-full shadow px-6 py-2 ui-selected:bg-blue-50 ui-selected:text-blue-700">Mittwoch</Tab>
-        <Tab class="bg-zinc-50 rounded-lg w-full shadow px-6 py-2 ui-selected:bg-blue-50 ui-selected:text-blue-700">Donnerstag</Tab>
-        <Tab class="bg-zinc-50 rounded-lg w-full shadow px-6 py-2 ui-selected:bg-blue-50 ui-selected:text-blue-700">Freitag</Tab>
+      <TabList class="flex gap-1.5 p-1.5 m-3 rounded-lg bg-zinc-100">
+        <Tab class="text-sm outline-none font-medium ui-selected:bg-white ui-selected:text-blue-700 w-full py-2 rounded-md ui-selected:shadow">Mo</Tab>
+        <Tab class="text-sm outline-none font-medium ui-selected:bg-white ui-selected:text-blue-700 w-full py-2 rounded-md ui-selected:shadow">Di</Tab>
+        <Tab class="text-sm outline-none font-medium ui-selected:bg-white ui-selected:text-blue-700 w-full py-2 rounded-md ui-selected:shadow">Mi</Tab>
+        <Tab class="text-sm outline-none font-medium ui-selected:bg-white ui-selected:text-blue-700 w-full py-2 rounded-md ui-selected:shadow">Do</Tab>
+        <Tab class="text-sm outline-none font-medium ui-selected:bg-white ui-selected:text-blue-700 w-full py-2 rounded-md ui-selected:shadow">Fr</Tab>
       </TabList>
       <TabPanels>
         <TabPanel v-for="day in timetable">
