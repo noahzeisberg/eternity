@@ -27,6 +27,7 @@
 </template>
 <script setup>
 import {Tab, TabGroup, TabList, TabPanel, TabPanels} from "@headlessui/vue";
+
 const { timetable } = await getTimetable()
 const { teachers } = await getTeachers()
 
@@ -52,7 +53,6 @@ async function getTeachers() {
 function getCurrentDayOfWeek() {
   const today = new Date().getDay();
   const currentDay = (today + 6) % 7
-  const selected = currentDay >= 5 ? 0 : currentDay
-  return selected
+  return currentDay >= 5 ? 0 : currentDay
 }
 </script>
