@@ -1,3 +1,0 @@
-<template>
-  <Placeholder></Placeholder>
-</template>
