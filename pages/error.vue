@@ -11,7 +11,7 @@
         </span>
 
         <template #footer>
-          <NuxtLink class="text-sm text-zinc-400">Zurück zur Übersicht</NuxtLink>
+          <NuxtLink to="/" class="text-sm text-zinc-400">Zurück zur Übersicht</NuxtLink>
         </template>
       </Card>
     </Outline>
