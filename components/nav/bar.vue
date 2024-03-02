@@ -7,7 +7,7 @@
         </svg>
       </button>
 
-      <svg v-else width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-8 h-8">
+      <svg v-else width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6">
         <path d="M4 16V8H6.19062L9.67625 12.2286V8H12V16H9.94251L6.32375 11.6114V16H4Z" fill="black"/>
         <path d="M12 8L20 8L20 10.1906L15.7714 13.6762L20 13.6762L20 16L12 16L12 13.9425L16.3886 10.3238L12 10.3238L12 8Z" fill="black"/>
       </svg>
