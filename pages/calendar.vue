@@ -1,24 +1,6 @@
 <template>
   <UnityPage page-title="Kalender">
-    <Outline v-if="true">
-      <Disclosure v-slot="{ open }" v-for="month in exams">
-        <Card v-if="month.exams.length !== 0">
-          <template #header>
-            <DisclosureButton class="text-start">
-              <h1 class="font-semibold">{{ month.name }}</h1>
-            </DisclosureButton>
-          </template>
-
-          <template v-if="open" #footer>
-            <DisclosurePanel class="flex flex-col" static>
-              <span v-for="exam in month.exams"><span class="text-zinc-400">{{ exam.date }}. {{ month.name }}</span> - {{ exam.name }}</span>
-            </DisclosurePanel>
-          </template>
-        </Card>
-      </Disclosure>
-    </Outline>
-
-    <TabGroup v-else>
+    <TabGroup>
       <TabList class="flex gap-1.5 p-1.5 m-3 rounded-lg bg-zinc-100">
         <template v-for="month in exams">
           <Tab v-if="month.exams.length !== 0" class="text-sm outline-none ui-selected:bg-white font-medium ui-selected:text-blue-700 w-full py-2 rounded-md ui-selected:shadow">{{ month.name }}</Tab>
