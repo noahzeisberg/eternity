@@ -1046,7 +1046,7 @@ export default defineEventHandler(async event => {
             },
             {
                 short: "ZRNC",
-                name: "Hr Zürn",
+                name: "Zürn",
                 subjects: [
                     "Chemie",
                     "Physik"
@@ -1054,7 +1054,7 @@ export default defineEventHandler(async event => {
             },
             {
                 short: "ZRNL",
-                name: "Fr Zürn",
+                name: "Zürn",
                 subjects: [
                     "Mathe",
                     "Physik"
