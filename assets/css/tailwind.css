@@ -1,11 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+@import url('https://api.fontshare.com/v2/css?f[]=switzer@2,1&display=swap" rel="stylesheet');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 * {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Switzer', sans-serif;
 }
 
 a.router-link-exact-active {
