@@ -10,7 +10,6 @@ export default defineNuxtConfig({
             title: "Unity [BETA]",
             link: [{ rel: 'icon', type: 'image/ico', href: 'favicon.ico' }]
         },
-        baseURL: "/unity/"
     },
     ssr: false,
     nitro: {
