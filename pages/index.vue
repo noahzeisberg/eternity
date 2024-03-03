@@ -88,7 +88,7 @@ async function getStudents() {
 
 function getDate() {
   const date = new Date()
-  return date.getDay() + ". " + [
+  return date.getDate() + ". " + [
     "Januar",
     "Februar",
     "März",
@@ -101,7 +101,7 @@ function getDate() {
     "Oktober",
     "November",
     "Dezember"
-  ][date.getMonth()-1] + " " + date.getFullYear()
+  ][date.getMonth()] + " " + date.getFullYear()
 }
 
 function getCurrentDayOfWeek() {
