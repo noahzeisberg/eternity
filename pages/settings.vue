@@ -29,7 +29,7 @@
         <AboutProfile display-name="Noah Zeisberg" task="Core Developer" picture="noah"/>
         <AboutProfile display-name="Luca Peter" task="Datenverarbeitung & Ideen" picture="luca"/>
         <AboutProfile display-name="Dominik Bauer" task="Datenverarbeitung & Ideen" picture="dominik"/>
-        <AboutProfile display-name="Massih Haschemi" task="Ideen & Datenkollektion" picture="massih"/>
+        <AboutProfile display-name="Massih Haschemi" task="Ideen & Datenerarbeitung" picture="massih"/>
         <AboutProfile display-name="Elias Wardak" task="Ideen" picture="elias"/>
       </Card>
 
@@ -44,7 +44,7 @@
         </template>
       </Card>
 
-      <NuxtLink to="mailto://noah.zeisberg@heinrichboell.schule" class="text-center w-full py-3 bg-blue-700 text-zinc-50 rounded-lg">Probleme melden</NuxtLink>
+      <NuxtLink to="mailto://noah.zeisberg@heinrichboell.schule" class="text-center w-full py-3 bg-blue-700 text-zinc-50 rounded-lg shadow">Probleme melden</NuxtLink>
     </Outline>
   </UnityPage>
 </template>
