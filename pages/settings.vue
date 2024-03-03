@@ -59,7 +59,7 @@ let commitSha
 try {
   latestCommit = await retrieveLatestCommit()
   commitDate = new Date(latestCommit["commit"]["committer"]["date"])
-  commitTimeString = commitDate.getUTCDay() + "." + commitDate.getUTCMonth() + "." + commitDate.getUTCFullYear()
+  commitTimeString = commitDate.getDate() + "." + commitDate.getMonth() + "." + commitDate.getFullYear()
   commitLink = latestCommit["html_url"]
   commitSha = latestCommit["sha"].substring(0, 7)
 
