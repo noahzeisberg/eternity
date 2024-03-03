@@ -29,7 +29,7 @@
         <AboutProfile display-name="Noah Zeisberg" task="Core Developer" picture="noah"/>
         <AboutProfile display-name="Luca Peter" task="Datenverarbeitung & Ideen" picture="luca"/>
         <AboutProfile display-name="Dominik Bauer" task="Datenverarbeitung & Ideen" picture="dominik"/>
-        <AboutProfile display-name="Massih Haschemi" task="Ideen & Datenerarbeitung" picture="massih"/>
+        <AboutProfile display-name="Massih Haschemi" task="Datensammlung & Ideen" picture="massih"/>
         <AboutProfile display-name="Elias Wardak" task="Ideen" picture="elias"/>
       </Card>
 
@@ -67,8 +67,7 @@ try {
     const data = await $fetch("https://api.github.com/repos/noahzeisberg/unity/commits")
     return data[0]
   }
-}
-catch (e) {
+} catch (e) {
   console.log(e)
 }
 </script>
