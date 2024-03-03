@@ -7,7 +7,7 @@ export default defineNuxtConfig({
     modules: ['@nuxtjs/tailwindcss', "@nuxt/image"],
     app: {
         head: {
-            title: "Unity [BETA]",
+            title: "Unity Chores - Preview",
             link: [{ rel: 'icon', type: 'image/ico', href: 'favicon.ico' }]
         },
     },

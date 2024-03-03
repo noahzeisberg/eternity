@@ -16,10 +16,14 @@
                   <h1 class="font-semibold">{{ exam.date }}. {{ month.name }}. {{ month.year }} &middot; <span class="font-normal">{{ exam.name }}</span></h1>
                 </template>
 
+                <p>
+                  Themen: ...
+                </p>
+
                 <template v-if="exam.teacher.length !== 0" #footer>
-                <span class="flex gap-1">
-                  <span v-for="teacher in exam.teacher">{{ teacher }}</span>
-                </span>
+                  <span class="text-sm text-zinc-400 flex gap-1">
+                    <span v-for="teacher in exam.teacher">{{ teacher }}</span>
+                  </span>
                 </template>
               </Card>
             </Outline>
@@ -32,9 +36,6 @@
 
 <script setup>
 import {
-  Disclosure,
-  DisclosureButton,
-  DisclosurePanel,
   Tab,
   TabGroup,
   TabList,
