@@ -1,5 +1,5 @@
 <template>
-  <UnityPage :page-title="teacherObject.name">
+  <Page :page-title="teacherObject.name">
     <Outline>
       <Card>
         <template #header>
@@ -18,12 +18,12 @@
         </template>
       </Card>
     </Outline>
-  </UnityPage>
+  </Page>
 </template>
 
 <script setup>
 const { teacher } = useRoute().params
-const { teachers } = await getTeachers()
+const { teachers } = await $fetch("/api/teachers")
 
 const teacherObject = getTeacherByShort(teacher)
 
@@ -38,10 +38,5 @@ function getTeacherByShort(short) {
     }
   }
   return null
-}
-
-async function getTeachers() {
-  const { teachers } = await $fetch("/api/teachers")
-  return { teachers }
 }
 </script>

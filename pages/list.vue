@@ -1,5 +1,5 @@
 <template>
-  <UnityPage page-title="Liste">
+  <Page page-title="Liste">
     <TabGroup>
       <TabList class="flex gap-1.5 p-1.5 m-3 rounded-lg bg-zinc-100">
         <Tab class="text-sm outline-none ui-selected:bg-white font-medium ui-selected:text-blue-700 w-full py-2 rounded-md ui-selected:shadow">Schüler</Tab>
@@ -50,7 +50,7 @@
         </TabPanel>
       </TabPanels>
     </TabGroup>
-  </UnityPage>
+  </Page>
 </template>
 <script setup>
 import {
@@ -62,20 +62,10 @@ import {
 } from "@headlessui/vue";
 
 const input = ref("")
-const teachers = await getTeachers()
-const students = await getStudents()
+const { teachers } = await $fetch("/api/teachers")
+const { students } = await $fetch("/api/students")
 
 async function openTeacherProfile() {
   await useRouter().push("/teacher/" + input.value.toLowerCase())
-}
-
-async function getTeachers() {
-  const { teachers } = await $fetch("/api/teachers")
-  return teachers
-}
-
-async function getStudents() {
-  const { students } = await $fetch("/api/students")
-  return students
 }
 </script>

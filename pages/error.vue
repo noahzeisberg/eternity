@@ -1,5 +1,5 @@
 <template>
-  <UnityPage page-title="Seite nicht gefunden.">
+  <Page page-title="Seite nicht gefunden.">
     <Outline>
       <Card>
         <template #header>
@@ -15,5 +15,5 @@
         </template>
       </Card>
     </Outline>
-  </UnityPage>
+  </Page>
 </template>

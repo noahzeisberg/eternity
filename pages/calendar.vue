@@ -1,5 +1,5 @@
 <template>
-  <UnityPage page-title="Kalender">
+  <Page page-title="Kalender">
     <TabGroup>
       <TabList class="flex gap-1.5 p-1.5 m-3 rounded-lg bg-zinc-100">
         <template v-for="month in exams">
@@ -31,7 +31,7 @@
         </template>
       </TabPanels>
     </TabGroup>
-  </UnityPage>
+  </Page>
 </template>
 
 <script setup>
@@ -44,12 +44,7 @@ import {
 } from "@headlessui/vue";
 
 const date = ref(new Date())
-const exams = await getExams()
-
-async function getExams() {
-  const { exams } = await $fetch("/api/exams")
-  return exams
-}
+const { exams } = await $fetch("/api/exams")
 
 function getDate(d) {
   const date = new Date(d)

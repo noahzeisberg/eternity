@@ -1,5 +1,5 @@
 <template>
-  <UnityPage page-title="Einstellungen">
+  <Page page-title="Einstellungen">
     <Outline>
       <Card>
         <template #header>
@@ -46,7 +46,7 @@
 
       <NuxtLink to="mailto://noah.zeisberg@heinrichboell.schule" class="text-center w-full py-3 bg-blue-700 text-zinc-50 rounded-lg shadow">Probleme melden</NuxtLink>
     </Outline>
-  </UnityPage>
+  </Page>
 </template>
 
 <script setup>

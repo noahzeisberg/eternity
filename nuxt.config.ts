@@ -7,16 +7,18 @@ export default defineNuxtConfig({
     modules: ['@nuxtjs/tailwindcss', "@nuxt/image"],
     app: {
         head: {
-            title: "Unity Chores - Preview",
-            link: [{ rel: 'icon', type: 'image/ico', href: 'favicon.ico' }]
+            title: "Eternity for Schools - Active Development Preview",
+            link: [
+                { rel: 'icon', type: 'image/ico', href: '/eternity.png' },
+            ],
         },
     },
     ssr: false,
     nitro: {
       storage: {
-          dataStorage: {
+          database: {
               driver: "fs",
-              base: ".cache"
+              base: "database"
           }
       }
     }

@@ -4,8 +4,8 @@ export default defineEventHandler(async event => {
             {
                 day: "Montag",
                 lessons: [
-                    { name: "Physik", teacher: "STN", room: 138 },
-                    { name: "Physik", teacher: "STN", room: 138 },
+                    { name: "Physik", teacher: "STN", room: 129 },
+                    { name: "Physik", teacher: "STN", room: 129 },
                     { name: "Englisch", teacher: "FTH", room: 221 },
                     { name: "Englisch", teacher: "FTH", room: 221 },
                     { name: "Deutsch", teacher: "PLC", room: 221 },

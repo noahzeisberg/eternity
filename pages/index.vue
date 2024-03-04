@@ -1,8 +1,8 @@
 <template>
-  <UnityPage page-title="Unity">
+  <Page page-title="Eternity">
     <Outline>
       <div class="flex items-center justify-center flex-col my-3">
-        <h1 class="text-2xl font-semibold">{{ date }}</h1>
+        <h1 class="text-2xl font-semibold">{{ getDate() }}</h1>
         <h1>{{ getCurrentDayOfWeek() }}</h1>
       </div>
 
@@ -11,45 +11,30 @@
           <h1 class="font-semibold">Ordnungsdienst</h1>
         </template>
 
-        <span>{{ student1 }} <span class="text-zinc-400">(Besen)</span></span>
-        <span>{{ student2 }} <span class="text-zinc-400">(Kehrblech)</span></span>
+        <span>{{ selectStudents()[0] }} <span class="text-zinc-400">(Besen)</span></span>
+        <span>{{ selectStudents()[1] }} <span class="text-zinc-400">(Kehrblech)</span></span>
 
         <template #footer>
           <span class="text-sm text-zinc-500">Zyklus: {{ cycle }} - {{ week }}</span>
         </template>
       </Card>
     </Outline>
-  </UnityPage>
+  </Page>
 </template>
 
 <script setup>
-const student1 = ref("")
-const student2 = ref("")
-
-const date = ref(getDate())
-let targetLength
-
-const week = getCurrentWeekOfYear()
 let cycle
-const { students, studentCount } = await getStudents()
-const selectedStudents = selectStudents()
-
-if (week >= selectedStudents.length) {
-  cycle = week % selectedStudents.length
-} else {
-  cycle = week
-}
-
-student1.value = selectedStudents[cycle][0]
-student2.value = selectedStudents[cycle][1]
+const week = getCurrentWeekOfYear()
+const { students } = await $fetch("/api/students")
 
 function selectStudents() {
+  let targetLength
   let groups = []
-  if(studentCount % 2 === 0) {
-    targetLength = studentCount
+  if(students.length % 2 === 0) {
+    targetLength = students.length
   } else {
     students.push(...students)
-    targetLength = studentCount*2
+    targetLength = students.length*2
   }
 
   let even = []
@@ -70,7 +55,13 @@ function selectStudents() {
     })
   }
 
-  return groups
+  if (week >= groups.length) {
+    cycle = week % groups.length
+  } else {
+    cycle = week
+  }
+
+  return groups[cycle]
 }
 
 function getCurrentWeekOfYear() {
@@ -79,11 +70,6 @@ function getCurrentWeekOfYear() {
   const diff = now - startOfYear
   const oneWeekInMillis = 1000 * 60 * 60 * 24 * 7
   return Math.floor(diff / oneWeekInMillis)
-}
-
-async function getStudents() {
-  const { students } = await $fetch("/api/students")
-  return { students, studentCount: students.length }
 }
 
 function getDate() {
