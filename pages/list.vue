@@ -44,7 +44,7 @@
                 <h1 class="font-semibold">{{ teacher["name"] }} <span class="font-normal text-zinc-400">({{ teacher["short"] }})</span></h1>
               </template>
 
-              <span class="text-sm" v-for="subject in teacher.subjects">{{ subject }}</span>
+              <LiquidText v-for="subject in teacher.subjects">{{ subject }}</LiquidText>
             </LiquidCard>
           </LiquidOutline>
         </TabPanel>

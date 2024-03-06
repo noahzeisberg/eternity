@@ -1,7 +1,7 @@
 <template>
-  <Page page-title="Seite nicht gefunden.">
-    <Outline>
-      <Card>
+  <LiquidPage page-title="Seite nicht gefunden.">
+    <LiquidOutline>
+      <LiquidCard>
         <template #header>
           <h1 class="font-semibold">Diese Seite existiert nicht!</h1>
         </template>
@@ -13,7 +13,7 @@
         <template #footer>
           <NuxtLink to="/" class="text-sm text-zinc-400">Zurück zur Übersicht</NuxtLink>
         </template>
-      </Card>
-    </Outline>
-  </Page>
+      </LiquidCard>
+    </LiquidOutline>
+  </LiquidPage>
 </template>
