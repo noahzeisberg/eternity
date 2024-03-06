@@ -1,5 +1,5 @@
 <template>
-  <Page page-title="Kalender">
+  <LiquidPage page-title="Kalender">
     <TabGroup>
       <TabList class="flex gap-1.5 p-1.5 m-3 rounded-lg bg-zinc-100">
         <template v-for="month in exams">
@@ -10,28 +10,26 @@
       <TabPanels>
         <template v-for="month in exams">
           <TabPanel v-if="month.exams.length !== 0">
-            <Outline>
-              <Card v-for="exam in month.exams">
+            <LiquidOutline>
+              <LiquidCard v-for="exam in month.exams">
                 <template #header>
-                  <h1 class="font-semibold">{{ exam.date }}. {{ month.name }}. {{ month.year }} &middot; <span class="font-normal">{{ exam.name }}</span></h1>
+                  <LiquidTitle>{{ exam.date }}. {{ month.name }}. {{ month.year }} &middot; <LiquidText class="font-normal">{{ exam.name }}</LiquidText></LiquidTitle>
                 </template>
 
-                <p>
-                  Themen: ...
-                </p>
+                <LiquidText v-for="topic in exam.topics">{{ topic.name }}</LiquidText>
 
                 <template v-if="exam.teacher.length !== 0" #footer>
-                  <span class="text-sm text-zinc-400 flex gap-1">
+                  <LiquidDisclaimer accent>
                     <span v-for="teacher in exam.teacher">{{ teacher }}</span>
-                  </span>
+                  </LiquidDisclaimer>
                 </template>
-              </Card>
-            </Outline>
+              </LiquidCard>
+            </LiquidOutline>
           </TabPanel>
         </template>
       </TabPanels>
     </TabGroup>
-  </Page>
+  </LiquidPage>
 </template>
 
 <script setup>

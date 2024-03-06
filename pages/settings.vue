@@ -1,52 +1,52 @@
 <template>
-  <Page page-title="Einstellungen">
-    <Outline>
-      <Card>
+  <LiquidPage page-title="Einstellungen">
+    <LiquidOutline>
+      <LiquidCard>
         <template #header>
-          <h1 class="font-semibold">Präferenzen</h1>
+          <LiquidTitle>Präferenzen</LiquidTitle>
         </template>
         Optionen werden bald hinzugefügt.
-      </Card>
+      </LiquidCard>
 
-      <Card>
+      <LiquidCard>
         <template #header>
-          <h1 class="font-semibold">Erscheinungsbild</h1>
+          <LiquidTitle>Erscheinungsbild</LiquidTitle>
         </template>
         Optionen werden bald hinzugefügt.
-      </Card>
+      </LiquidCard>
 
-      <Card>
+      <LiquidCard>
         <template #header>
-          <h1 class="font-semibold">Verhalten</h1>
+          <LiquidTitle>Verhalten</LiquidTitle>
         </template>
         Optionen werden bald hinzugefügt.
-      </Card>
+      </LiquidCard>
 
-      <Card>
+      <LiquidCard>
         <template #header>
-          <h1 class="font-semibold">Contributors</h1>
+          <LiquidTitle>Contributors</LiquidTitle>
         </template>
         <AboutProfile display-name="Noah Zeisberg" task="Core Developer" picture="noah"/>
         <AboutProfile display-name="Luca Peter" task="Datenverarbeitung & Ideen" picture="luca"/>
         <AboutProfile display-name="Dominik Bauer" task="Datenverarbeitung & Ideen" picture="dominik"/>
         <AboutProfile display-name="Massih Haschemi" task="Datensammlung & Ideen" picture="massih"/>
         <AboutProfile display-name="Elias Wardak" task="Ideen" picture="elias"/>
-      </Card>
+      </LiquidCard>
 
-      <Card>
+      <LiquidCard>
         <template #header>
-          <h1 class="font-semibold">App-Informationen</h1>
+          <LiquidTitle>App-Informationen</LiquidTitle>
         </template>
-        <p>Version: master@<NuxtLink :to="commitLink" class="text-zinc-400 underline">({{ commitSha }})</NuxtLink></p>
-        <p>Letztes Update: {{ commitTimeString }}</p>
+        <LiquidText>Version: master@<NuxtLink :to="commitLink" class="text-zinc-400 underline">({{ commitSha }})</NuxtLink></LiquidText>
+        <LiquidText>Letztes Update: {{ commitTimeString }}</LiquidText>
         <template #footer>
           <NuxtLink to="https://github.com/noahzeisberg/unity" class="text-zinc-400">GitHub Repository</NuxtLink>
         </template>
-      </Card>
+      </LiquidCard>
 
       <NuxtLink to="mailto://noah.zeisberg@heinrichboell.schule" class="text-center w-full py-3 bg-blue-700 text-zinc-50 rounded-lg shadow">Probleme melden</NuxtLink>
-    </Outline>
-  </Page>
+    </LiquidOutline>
+  </LiquidPage>
 </template>
 
 <script setup>
@@ -57,16 +57,11 @@ let commitLink
 let commitSha
 
 try {
-  latestCommit = await retrieveLatestCommit()
+  latestCommit = await $fetch("https://api.github.com/repos/noahzeisberg/unity/commits")[0]
   commitDate = new Date(latestCommit["commit"]["committer"]["date"])
   commitTimeString = commitDate.getDate() + "." + commitDate.getMonth() + "." + commitDate.getFullYear()
   commitLink = latestCommit["html_url"]
   commitSha = latestCommit["sha"].substring(0, 7)
-
-  async function retrieveLatestCommit() {
-    const data = await $fetch("https://api.github.com/repos/noahzeisberg/unity/commits")
-    return data[0]
-  }
 } catch (e) {
   console.log(e)
 }

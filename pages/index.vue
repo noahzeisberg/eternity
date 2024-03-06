@@ -1,25 +1,25 @@
 <template>
-  <Page page-title="Eternity">
-    <Outline>
-      <div class="flex items-center justify-center flex-col my-3">
-        <h1 class="text-2xl font-semibold">{{ getDate() }}</h1>
-        <h1>{{ getCurrentDayOfWeek() }}</h1>
+  <LiquidPage page-title="Eternity">
+    <LiquidOutline>
+      <div class="flex items-center justify-center flex-col my-6">
+        <LiquidHeading class="text-2xl">{{ getDate() }}</LiquidHeading>
+        <LiquidHeading>{{ getCurrentDayOfWeek() }}</LiquidHeading>
       </div>
 
-      <Card>
+      <LiquidCard>
         <template #header>
-          <h1 class="font-semibold">Ordnungsdienst</h1>
+          <LiquidHeading>Ordnungsdienst</LiquidHeading>
         </template>
 
-        <span>{{ selectStudents()[0] }} <span class="text-zinc-400">(Besen)</span></span>
-        <span>{{ selectStudents()[1] }} <span class="text-zinc-400">(Kehrblech)</span></span>
+        <LiquidText>{{ selectStudents()[0] }} <LiquidText accent>(Besen)</LiquidText></LiquidText>
+        <LiquidText>{{ selectStudents()[1] }} <LiquidText accent>(Kehrblech)</LiquidText></LiquidText>
 
         <template #footer>
-          <span class="text-sm text-zinc-500">Zyklus: {{ cycle }} - {{ week }}</span>
+          <LiquidDisclaimer accent>Zyklus: {{ cycle }} - {{ week }}</LiquidDisclaimer>
         </template>
-      </Card>
-    </Outline>
-  </Page>
+      </LiquidCard>
+    </LiquidOutline>
+  </LiquidPage>
 </template>
 
 <script setup>

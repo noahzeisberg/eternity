@@ -1,9 +1,9 @@
 <template>
-  <Page page-title="Hausaufgaben">
-    <Outline>
-      <Card>
-        test
-      </Card>
-    </Outline>
-  </Page>
+  <LiquidPage page-title="Hausaufgaben">
+    <LiquidOutline>
+      <LiquidCard>
+
+      </LiquidCard>
+    </LiquidOutline>
+  </LiquidPage>
 </template>
