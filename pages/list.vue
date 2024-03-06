@@ -65,9 +65,7 @@ const query = ref("")
 const { teachers } = await $fetch("/api/teachers")
 const { students } = await $fetch("/api/students")
 
-const filteredTeachers = computed(() =>
-  query.value === '' ? teachers : teachers.filter((teacher) => {
-      return teacher.name.toLowerCase().includes(query.value.toLowerCase()) || teacher.short.toLowerCase().includes(query.value.toLowerCase())
-  })
-)
+const filteredTeachers = computed(() => query.value === '' ? teachers : teachers.filter((teacher) => {
+  return teacher.name.toLowerCase().includes(query.value.toLowerCase()) || teacher.short.toLowerCase().includes(query.value.toLowerCase())
+}))
 </script>

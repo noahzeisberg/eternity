@@ -2,13 +2,13 @@
   <LiquidPage page-title="Eternity">
     <LiquidOutline>
       <div class="flex items-center justify-center flex-col my-6">
-        <LiquidHeading class="text-2xl">{{ getDate() }}</LiquidHeading>
-        <LiquidHeading>{{ getCurrentDayOfWeek() }}</LiquidHeading>
+        <LiquidTitle class="text-2xl">{{ getDate() }}</LiquidTitle>
+        <LiquidTitle>{{ getCurrentDayOfWeek() }}</LiquidTitle>
       </div>
 
       <LiquidCard>
         <template #header>
-          <LiquidHeading>Ordnungsdienst</LiquidHeading>
+          <LiquidTitle>Ordnungsdienst</LiquidTitle>
         </template>
 
         <LiquidText>{{ selectStudents()[0] }} <LiquidText accent>(Besen)</LiquidText></LiquidText>
