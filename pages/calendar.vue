@@ -13,14 +13,14 @@
             <LiquidOutline>
               <LiquidCard v-for="exam in month.exams">
                 <template #header>
-                  <LiquidTitle>{{ exam.date }}. {{ month.name }}. {{ month.year }} &middot; <LiquidText class="font-normal">{{ exam.name }}</LiquidText></LiquidTitle>
+                  <LiquidTitle>{{ exam.date }}. {{ month.name }} {{ month.year }} &middot; <LiquidText class="font-normal">{{ exam.name }}</LiquidText></LiquidTitle>
                 </template>
 
                 <LiquidText v-for="topic in exam.topics">{{ topic.name }}</LiquidText>
 
                 <template v-if="exam.teacher.length !== 0" #footer>
-                  <LiquidDisclaimer accent>
-                    <span v-for="teacher in exam.teacher">{{ teacher }}</span>
+                  <LiquidDisclaimer class="flex gap-1" accent>
+                    <LiquidText v-for="teacher in exam.teacher">{{ teacher }}</LiquidText>
                   </LiquidDisclaimer>
                 </template>
               </LiquidCard>
@@ -41,24 +41,5 @@ import {
   TabPanels
 } from "@headlessui/vue";
 
-const date = ref(new Date())
 const { exams } = await $fetch("/api/exams")
-
-function getDate(d) {
-  const date = new Date(d)
-  return date.getDate() + ". " + [
-    "Januar",
-    "Februar",
-    "März",
-    "April",
-    "Mai",
-    "Juni",
-    "Juli",
-    "August",
-    "September",
-    "Oktober",
-    "November",
-    "Dezember"
-  ][date.getMonth()] + " " + date.getFullYear()
-}
 </script>

@@ -6,10 +6,13 @@ export default defineNuxtConfig({
     modules: ['@nuxtjs/tailwindcss', "@nuxt/image"],
     app: {
         head: {
-            title: "Eternity for Schools - Active Development Preview",
+            title: "Eternity Web - Active Development Preview",
             link: [
                 { rel: 'icon', type: 'image/ico', href: '/eternity.png' },
             ],
+            meta: [
+                { name: "referrer", content: "no-referrer" }
+            ]
         },
     },
     ssr: false,
@@ -20,5 +23,10 @@ export default defineNuxtConfig({
               base: "database"
           }
       }
+    },
+    routeRules: {
+        "**": {
+            cors: true
+        }
     }
 })

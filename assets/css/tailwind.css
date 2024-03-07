@@ -8,6 +8,24 @@
     font-family: 'Inter', sans-serif;
 }
 
+.animation-ready {
+    animation-name: fly-in;
+    animation-timing-function: ease-out;
+    animation-duration: 300ms;
+}
+
 a.router-link-exact-active {
     @apply text-blue-700;
+}
+
+@keyframes fly-in {
+    0% {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }

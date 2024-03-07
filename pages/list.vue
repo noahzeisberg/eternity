@@ -9,7 +9,12 @@
       <TabPanels>
         <TabPanel>
           <LiquidOutline>
-            <LiquidCard v-for="student in students">
+            <LiquidCard>
+              <button v-if="!playSounds" @click="playAudio">Anwesenheit überprüfen</button>
+              <button v-else @click="stopAudio">Audio stoppen</button>
+            </LiquidCard>
+
+            <LiquidCard class="duration-300 ease-in-out" :class="currentStudent === student && 'ring-4 ring-blue-700'" v-for="student in students">
               <template #header>
                 <LiquidTitle>{{ student }}</LiquidTitle>
               </template>
@@ -45,6 +50,17 @@
               </template>
 
               <LiquidText v-for="subject in teacher.subjects">{{ subject }}</LiquidText>
+
+              <template #footer>
+                <LiquidDisclaimer accent>
+                  <NuxtLink class="flex gap-3 items-center" :to="`mailto://${teacher.short.toLowerCase()}@hbs-hattersheim.de`">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+                    </svg>
+                    <LiquidText>E-Mail</LiquidText>
+                  </NuxtLink>
+                </LiquidDisclaimer>
+              </template>
             </LiquidCard>
           </LiquidOutline>
         </TabPanel>
@@ -53,14 +69,10 @@
   </LiquidPage>
 </template>
 <script setup>
-import {
-  Tab,
-  TabGroup,
-  TabList,
-  TabPanel,
-  TabPanels
-} from "@headlessui/vue";
+import {Tab, TabGroup, TabList, TabPanel, TabPanels} from "@headlessui/vue";
 
+const playSounds = ref(false)
+const currentStudent = ref("")
 const query = ref("")
 const { teachers } = await $fetch("/api/teachers")
 const { students } = await $fetch("/api/students")
@@ -68,4 +80,23 @@ const { students } = await $fetch("/api/students")
 const filteredTeachers = computed(() => query.value === '' ? teachers : teachers.filter((teacher) => {
   return teacher.name.toLowerCase().includes(query.value.toLowerCase()) || teacher.short.toLowerCase().includes(query.value.toLowerCase())
 }))
+
+async function playAudio() {
+  playSounds.value = true
+  for (const student of students) {
+    if (playSounds.value) {
+      currentStudent.value = student
+      let lang = "de"
+      let url = "https://translate.google.com/translate_tts?ie=UTF-8&tl=" + lang + "&client=tw-ob&q=" + student
+      let audio = new Audio(url)
+      await audio.play()
+      await new Promise(resolve => { setTimeout(resolve, 2500) })
+    }
+  }
+}
+
+async function stopAudio() {
+  playSounds.value = false
+  currentStudent.value = ""
+}
 </script>

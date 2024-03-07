@@ -16,7 +16,7 @@
                 <LiquidTitle>{{ index+1 }}. {{ lesson.name }}</LiquidTitle>
               </template>
 
-              <LiquidText>Lehrer: {{ getTeacherByShort(lesson.teacher).name }} <NuxtLink :to="`/teacher/${lesson.teacher}`" class="text-zinc-400 underline">({{ lesson.teacher }})</NuxtLink></LiquidText>
+              <LiquidText>Lehrer: {{ getTeacherByShort(lesson.teacher).name }} <LiquidText accent>({{ lesson.teacher }})</LiquidText></LiquidText>
               <LiquidText>Raum: {{ lesson.room }}</LiquidText>
             </LiquidCard>
           </LiquidOutline>

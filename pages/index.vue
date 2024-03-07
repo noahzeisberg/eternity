@@ -11,8 +11,8 @@
           <LiquidTitle>Ordnungsdienst</LiquidTitle>
         </template>
 
-        <LiquidText>{{ selectStudents()[0] }} <LiquidText accent>(Besen)</LiquidText></LiquidText>
-        <LiquidText>{{ selectStudents()[1] }} <LiquidText accent>(Kehrblech)</LiquidText></LiquidText>
+        <LiquidText>{{ student1 }} <LiquidText accent>(Besen)</LiquidText></LiquidText>
+        <LiquidText>{{ student2 }} <LiquidText accent>(Kehrblech)</LiquidText></LiquidText>
 
         <template #footer>
           <LiquidDisclaimer accent>Zyklus: {{ cycle }} - {{ week }}</LiquidDisclaimer>
@@ -27,6 +27,11 @@ let cycle
 const week = getCurrentWeekOfYear()
 const { students } = await $fetch("/api/students")
 
+const student1 = ref("")
+const student2 = ref("")
+
+selectStudents()
+
 function selectStudents() {
   let targetLength
   let groups = []
@@ -34,8 +39,10 @@ function selectStudents() {
     targetLength = students.length
   } else {
     students.push(...students)
-    targetLength = students.length*2
+    targetLength = students.length
   }
+  console.log(targetLength)
+  console.log(students.length)
 
   let even = []
   let odd = []
@@ -61,7 +68,8 @@ function selectStudents() {
     cycle = week
   }
 
-  return groups[cycle]
+  student1.value = groups[cycle][0]
+  student2.value = groups[cycle][1]
 }
 
 function getCurrentWeekOfYear() {
