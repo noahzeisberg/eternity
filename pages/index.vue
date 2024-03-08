@@ -41,8 +41,6 @@ function selectStudents() {
     students.push(...students)
     targetLength = students.length
   }
-  console.log(targetLength)
-  console.log(students.length)
 
   let even = []
   let odd = []

@@ -26,12 +26,13 @@
         <template #header>
           <LiquidTitle>Contributors</LiquidTitle>
         </template>
-        <AboutProfile display-name="Noah Zeisberg" task="Core Developer" picture="noah"/>
-        <AboutProfile display-name="Elias Wardak" task="PR Manager & Testing" picture="elias"/>
-        <AboutProfile display-name="Dominik Bauer" task="Marketing & Ideen" picture="dominik"/>
-        <AboutProfile display-name="Massih Haschemi" task="Datenerarbeitung" picture="massih"/>
-        <AboutProfile display-name="Enrico Sanfratello" task="Ideen" picture="enrico"/>
-        <AboutProfile display-name="Luca Peter" task="Ideen" picture="luca"/>
+        <AboutProfile display-name="Noah Zeisberg" task="Core Developer" picture="noah" mail="noahonfyre@gmail.com"/>
+        <AboutProfile display-name="Elias Wardak" task="PR Manager & Testing" picture="elias" mail="elias.wardak@gmx.de"/>
+        <AboutProfile display-name="Dominik Bauer" task="Marketing & Ideen" picture="dominik" mail="dominik.bauer.106@gmail.com"/>
+        <AboutProfile display-name="Massih Haschemi" task="Datenerarbeitung" picture="massih" mail="Massih.h1@gmail.com"/>
+        <AboutProfile display-name="Raziel Otten" task="Ideen" picture="raziel" mail="Ottenraziel3@gmail.com"/>
+        <AboutProfile display-name="Enrico Sanfratello" task="Ideen" picture="enrico" mail=""/>
+        <AboutProfile display-name="Luca Peter" task="Ideen" picture="luca" mail="milchmax2000@gmail.com"/>
       </LiquidCard>
 
       <LiquidCard>
