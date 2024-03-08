@@ -27,7 +27,7 @@
                 </div>
                 <template v-if="open" #footer>
                   <ListboxOptions>
-                    <ListboxOption v-for="language in languages" :value="language">{{ language.name }}</ListboxOption>
+                    <ListboxOption class="my-1" v-for="language in languages" :value="language">{{ language.name }}</ListboxOption>
                   </ListboxOptions>
                 </template>
               </LiquidCard>
