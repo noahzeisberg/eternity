@@ -1,4 +1,4 @@
-export default defineEventHandler(async event => {
+export default defineEventHandler(async () => {
     return {
         teachers: [
             {
@@ -391,7 +391,7 @@ export default defineEventHandler(async event => {
                 name: "Ikbal",
                 subjects: [
                     "Ethik",
-                    "Mathematik"
+                    "Mathe"
                 ]
             },
             {
@@ -691,7 +691,7 @@ export default defineEventHandler(async event => {
                 short: "PRD",
                 name: "Preißendörfer",
                 subjects: [
-                    "Mathematik",
+                    "Mathe",
                     "Englisch",
 
                 ]
@@ -808,14 +808,14 @@ export default defineEventHandler(async event => {
                 name: "Schneider",
                 subjects: [
                     "Informatik",
-                    "Mathematik",
+                    "Mathe",
                 ]
             },
             {
                 short: "SNDS",
                 name: "Schneider",
                 subjects: [
-                    "Spo",
+                    "Sport",
                     "Mathe",
                 ]
             },
@@ -985,7 +985,7 @@ export default defineEventHandler(async event => {
                 subjects: [
                     "Chemie",
                     "Französisch",
-                    "Mathematik"
+                    "Mathe"
                 ]
             },
             {

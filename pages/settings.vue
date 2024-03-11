@@ -24,15 +24,28 @@
 
       <LiquidCard>
         <template #header>
-          <LiquidTitle>Contributors</LiquidTitle>
+          <LiquidTitle>Unser Team</LiquidTitle>
         </template>
-        <AboutProfile display-name="Noah Zeisberg" task="Core Developer" picture="noah" mail="noahonfyre@gmail.com"/>
-        <AboutProfile display-name="Elias Wardak" task="PR Manager & Testing" picture="elias" mail="elias.wardak@gmx.de"/>
-        <AboutProfile display-name="Dominik Bauer" task="Marketing & Ideen" picture="dominik" mail="dominik.bauer.106@gmail.com"/>
-        <AboutProfile display-name="Massih Haschemi" task="Datenerarbeitung" picture="massih" mail="Massih.h1@gmail.com"/>
-        <AboutProfile display-name="Raziel Otten" task="Ideen" picture="raziel" mail="Ottenraziel3@gmail.com"/>
-        <AboutProfile display-name="Enrico Sanfratello" task="Ideen" picture="enrico" mail=""/>
-        <AboutProfile display-name="Luca Peter" task="Ideen" picture="luca" mail="milchmax2000@gmail.com"/>
+        <AboutProfile display-name="Noah Zeisberg" task="Core Developer & System Admin" picture="noah" mail="noahonfyre@gmail.com"/>
+        <AboutProfile display-name="Dominik Bauer" task="PR Manager & Technical Writer" picture="dominik" mail="dominik.bauer.106@gmail.com"/>
+        <AboutProfile display-name="Elias Wardak" task="Coordinator & Quality Assurance" picture="elias" mail="elias.wardak@gmx.de"/>
+        <AboutProfile display-name="Luca Peter" task="Database Admin" picture="luca" mail="milchmax2000@gmail.com"/>
+        <AboutProfile display-name="Raziel Otten" task="Technical Writer" picture="raziel" mail="Ottenraziel3@gmail.com"/>
+        <AboutProfile display-name="Massih Haschemi" task="Quality Assurance" picture="massih" mail="Massih.h1@gmail.com"/>
+        <AboutProfile display-name="Enrico Sanfratello" task="Mitwirkender" picture="enrico" mail=""/>
+      </LiquidCard>
+
+      <LiquidCard>
+        <template #header>
+          <LiquidTitle>Open-Source <LiquidText accent>(via NPM)</LiquidText></LiquidTitle>
+        </template>
+        <NuxtLink class="hover:text-blue-700" to="https://www.npmjs.com/package/nuxt">Nuxt</NuxtLink>
+        <NuxtLink class="hover:text-blue-700" to="https://www.npmjs.com/package/@nuxtjs/tailwindcss">TailwindCSS for Nuxt</NuxtLink>
+        <NuxtLink class="hover:text-blue-700" to="https://www.npmjs.com/package/vue">Vue.js</NuxtLink>
+        <NuxtLink class="hover:text-blue-700" to="https://www.npmjs.com/package/vue-router">Vue Router</NuxtLink>
+        <NuxtLink class="hover:text-blue-700" to="https://www.npmjs.com/package/@headlessui/vue">Headless UI</NuxtLink>
+        <NuxtLink class="hover:text-blue-700" to="https://www.npmjs.com/package/@nuxt/image">Nuxt Image</NuxtLink>
+        <NuxtLink class="hover:text-blue-700" to="https://www.npmjs.com/package/jssoup">JSSoup</NuxtLink>
       </LiquidCard>
 
       <LiquidCard>
@@ -45,8 +58,6 @@
           <NuxtLink to="https://github.com/noahzeisberg/eternity" class="text-zinc-400">GitHub Repository</NuxtLink>
         </template>
       </LiquidCard>
-
-      <NuxtLink to="mailto://noah.zeisberg@heinrichboell.schule" class="text-center w-full py-3 bg-blue-700 text-zinc-50 rounded-lg shadow">Probleme melden</NuxtLink>
     </LiquidOutline>
   </LiquidPage>
 </template>

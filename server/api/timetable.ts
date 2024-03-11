@@ -1,4 +1,4 @@
-export default defineEventHandler(async event => {
+export default defineEventHandler(async () => {
     return {
         timetable: [
             {
@@ -48,8 +48,8 @@ export default defineEventHandler(async event => {
             {
                 day: "Freitag",
                 lessons: [
-                    { name: "Geschichte", teacher: "DRS", room: 221 },
-                    { name: "Geschichte", teacher: "DRS", room: 221 },
+                    { name: "Geschichte", teacher: "???", room: 221 },
+                    { name: "Geschichte", teacher: "???", room: 221 },
                     { name: "Englisch", teacher: "FTH", room: 221 },
                     { name: "Englisch", teacher: "FTH", room: 221 },
                     { name: "Spanisch", teacher: "DRR", room: 207 },

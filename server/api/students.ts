@@ -1,4 +1,4 @@
-export default defineEventHandler(async event => {
+export default defineEventHandler(async () => {
     return {
         students: [
             "Dominik Alexander Bauer",
@@ -6,10 +6,10 @@ export default defineEventHandler(async event => {
             "Halil Dacic",
             "Simon Ole Glowitzki",
             "Daniel Greuter",
-            "Massih Abdullah Haschemi",
+            "Massih Haschemi",
             "Lea Viktoria Hohmann",
             "Manuel Juhr",
-            "Mikail Leon Diefenbach",
+            "Mikail Leon Karaca",
             "Asia Karroumi",
             "Elina Klang",
             "Carolina Kösters",
