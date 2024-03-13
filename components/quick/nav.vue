@@ -1,6 +1,6 @@
 <template>
   <div class="h-[66px]"></div>
-  <nav class="flex bg-zinc-950 justify-between items-center py-5 px-8 fixed bottom-0 w-full">
+  <nav class="flex bg-zinc-900 justify-between items-center py-5 px-8 fixed bottom-0 w-full border-t border-zinc-800">
     <QuickLink title="Heute" to="/">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
         <path d="M11.47 3.841a.75.75 0 0 1 1.06 0l8.69 8.69a.75.75 0 1 0 1.06-1.061l-8.689-8.69a2.25 2.25 0 0 0-3.182 0l-8.69 8.69a.75.75 0 1 0 1.061 1.06l8.69-8.689Z" />

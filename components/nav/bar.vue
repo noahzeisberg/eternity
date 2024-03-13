@@ -1,5 +1,5 @@
 <template>
-  <nav class="flex items-center justify-between gap-6 px-6 py-4 sticky top-0 bg-zinc-950">
+  <nav class="flex items-center justify-between gap-6 px-6 py-4 sticky top-0 bg-zinc-900 border-b border-zinc-800">
     <div class="flex items-center justify-center w-8 h-8 text-[10px] text-zinc-50 font-bold bg-blue-700 rounded-full">
       {{ getUserIcon() }}
     </div>
