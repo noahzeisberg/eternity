@@ -8,6 +8,12 @@
     font-family: 'Inter', sans-serif;
 }
 
+@layer base {
+    body {
+        @apply bg-zinc-925 text-zinc-50;
+    }
+}
+
 .animation-ready {
     animation-name: fly-in;
     animation-timing-function: ease-out;

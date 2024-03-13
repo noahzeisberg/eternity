@@ -1,9 +1,9 @@
 <template>
   <LiquidPage page-title="Kalender">
     <TabGroup>
-      <TabList class="flex gap-1.5 p-1.5 m-3 rounded-lg bg-zinc-100">
+      <TabList class="flex gap-1.5 p-1.5 m-3 rounded-lg bg-zinc-900">
         <template v-for="month in exams">
-          <Tab v-if="month.exams.length !== 0" class="text-sm outline-none ui-selected:bg-white font-medium ui-selected:text-blue-700 w-full py-2 rounded-md ui-selected:shadow">{{ month.name }}</Tab>
+          <Tab v-if="month.exams.length !== 0" class="text-sm outline-none ui-selected:bg-zinc-925 font-medium ui-selected:text-blue-700 w-full py-2 rounded-md ui-selected:shadow">{{ month.name }}</Tab>
         </template>
       </TabList>
 

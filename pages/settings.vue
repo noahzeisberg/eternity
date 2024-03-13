@@ -3,23 +3,12 @@
     <LiquidOutline>
       <LiquidCard>
         <template #header>
-          <LiquidTitle>Präferenzen</LiquidTitle>
+          <div class="flex justify-between items-center">
+            <LiquidTitle>Dein Konto</LiquidTitle>
+            <NuxtLink to="/logout" class="text-blue-700 text-sm font-medium">Abmelden</NuxtLink>
+          </div>
         </template>
-        Optionen werden bald hinzugefügt.
-      </LiquidCard>
-
-      <LiquidCard>
-        <template #header>
-          <LiquidTitle>Erscheinungsbild</LiquidTitle>
-        </template>
-        Optionen werden bald hinzugefügt.
-      </LiquidCard>
-
-      <LiquidCard>
-        <template #header>
-          <LiquidTitle>Verhalten</LiquidTitle>
-        </template>
-        Optionen werden bald hinzugefügt.
+        <span class="w-full text-center">{{ user.email }}</span>
       </LiquidCard>
 
       <LiquidCard>
@@ -46,6 +35,7 @@
         <NuxtLink class="hover:text-blue-700" to="https://www.npmjs.com/package/@headlessui/vue">Headless UI</NuxtLink>
         <NuxtLink class="hover:text-blue-700" to="https://www.npmjs.com/package/@nuxt/image">Nuxt Image</NuxtLink>
         <NuxtLink class="hover:text-blue-700" to="https://www.npmjs.com/package/jssoup">JSSoup</NuxtLink>
+        <NuxtLink class="hover:text-blue-700" to="https://www.npmjs.com/package/@nuxtjs/supabase">Supabase for Nuxt</NuxtLink>
       </LiquidCard>
 
       <LiquidCard>
@@ -63,6 +53,8 @@
 </template>
 
 <script setup>
+const user = useSupabaseUser()
+
 const commits = await $fetch("https://api.github.com/repos/noahzeisberg/eternity/commits")
 let latestCommit = commits[0]
 let commitDate = new Date(latestCommit["commit"]["committer"]["date"])

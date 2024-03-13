@@ -1,10 +1,8 @@
 <template>
-  <nav class="flex items-center justify-between gap-6 px-6 py-4 sticky top-0 bg-zinc-50">
-    <button>
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-      </svg>
-    </button>
+  <nav class="flex items-center justify-between gap-6 px-6 py-4 sticky top-0 bg-zinc-950">
+    <div class="flex items-center justify-center w-8 h-8 text-[10px] text-zinc-50 font-bold bg-blue-700 rounded-full">
+      {{ getUserIcon() }}
+    </div>
 
     <h1 class="font-medium">{{ pageTitle }}</h1>
     <NuxtLink class="flex items-center justify-center w-8 h-8" to="/settings">
@@ -15,6 +13,24 @@
   </nav>
 </template>
 
-<script setup lang="ts">
-defineProps(["pageTitle"])
+<script setup>
+defineProps({
+  pageTitle: String
+})
+const user = useSupabaseUser()
+
+function getUserIcon() {
+  if (user.value !== null) {
+    if (user.value.email.endsWith("@heinrichboell.schule")) {
+      let names = user.value.email.split("@")[0].split(".")
+      let firstname = names[0]
+      let lastname = names[names.length-1]
+      return firstname[0].toUpperCase() + lastname[0].toUpperCase()
+    } else if (user.value.email.endsWith("@hbs-hattersheim.de")) {
+      return user.value.email.replaceAll("@hbs-hattersheim.de", "").toUpperCase()
+    }
+  } else {
+    return "??"
+  }
+}
 </script>

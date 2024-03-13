@@ -1,12 +1,12 @@
 <template>
   <LiquidPage page-title="Stundenplan">
     <TabGroup :default-index="getCurrentDayOfWeek()">
-      <TabList class="flex gap-1.5 p-1.5 m-3 rounded-lg bg-zinc-100">
-        <Tab class="text-sm outline-none font-medium ui-selected:bg-white ui-selected:text-blue-700 w-full py-2 rounded-md ui-selected:shadow">Mo</Tab>
-        <Tab class="text-sm outline-none font-medium ui-selected:bg-white ui-selected:text-blue-700 w-full py-2 rounded-md ui-selected:shadow">Di</Tab>
-        <Tab class="text-sm outline-none font-medium ui-selected:bg-white ui-selected:text-blue-700 w-full py-2 rounded-md ui-selected:shadow">Mi</Tab>
-        <Tab class="text-sm outline-none font-medium ui-selected:bg-white ui-selected:text-blue-700 w-full py-2 rounded-md ui-selected:shadow">Do</Tab>
-        <Tab class="text-sm outline-none font-medium ui-selected:bg-white ui-selected:text-blue-700 w-full py-2 rounded-md ui-selected:shadow">Fr</Tab>
+      <TabList class="flex gap-1.5 p-1.5 m-3 rounded-lg bg-zinc-900">
+        <Tab class="text-sm outline-none font-medium ui-selected:bg-zinc-925 ui-selected:text-blue-700 w-full py-2 rounded-md">Mo</Tab>
+        <Tab class="text-sm outline-none font-medium ui-selected:bg-zinc-925 ui-selected:text-blue-700 w-full py-2 rounded-md">Di</Tab>
+        <Tab class="text-sm outline-none font-medium ui-selected:bg-zinc-925 ui-selected:text-blue-700 w-full py-2 rounded-md">Mi</Tab>
+        <Tab class="text-sm outline-none font-medium ui-selected:bg-zinc-925 ui-selected:text-blue-700 w-full py-2 rounded-md">Do</Tab>
+        <Tab class="text-sm outline-none font-medium ui-selected:bg-zinc-925 ui-selected:text-blue-700 w-full py-2 rounded-md">Fr</Tab>
       </TabList>
       <TabPanels>
         <TabPanel v-for="day in timetable">

@@ -3,7 +3,7 @@ export default defineNuxtConfig({
     devtools: {
         enabled: false
     },
-    modules: ['@nuxtjs/tailwindcss', "@nuxt/image"],
+    modules: ['@nuxtjs/tailwindcss', "@nuxt/image", '@nuxtjs/supabase'],
     app: {
         head: {
             title: "Eternity Web - Active Development Preview",
