@@ -35,7 +35,7 @@
 </template>
 
 <script setup>
-const preferredClass = ref(useCookie("user.preferences.class").value.trim())
+const preferredClass = ref(useCookie("user.preferences.class").value)
 watch(preferredClass, () => {
   useCookie("user.preferences.class").value = preferredClass.value
 }, { immediate: true })
