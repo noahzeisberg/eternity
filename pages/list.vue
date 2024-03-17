@@ -47,7 +47,7 @@
 
         <TabPanel>
           <LiquidOutline>
-            <FormInput class="text-center" placeholder="Suchen..." v-model="query"></FormInput>
+            <FormInput class="text-center animation-ready" placeholder="Suchen..." v-model="query"></FormInput>
 
             <LiquidCard v-for="teacher in filteredTeachers">
               <template #header>
