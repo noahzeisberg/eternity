@@ -23,10 +23,5 @@ export default defineNuxtConfig({
               base: "database"
           }
       }
-    },
-    routeRules: {
-        "/substitutions": {
-            cors: true
-        }
     }
 })

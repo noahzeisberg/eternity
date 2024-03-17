@@ -125,6 +125,9 @@ async function getPayload() {
       "showSubstTypeColor": false,
       "showExamSupervision": false,
       "showUnheraldedExams": false
+    },
+    headers: {
+      "Access-Control-Allow-Origin": true
     }
   })
 }
