@@ -127,7 +127,7 @@ async function getPayload() {
       "showUnheraldedExams": false
     },
     headers: {
-      "Access-Control-Allow-Origin": true
+      "Access-Control-Allow-Origin": "*"
     }
   })
 }
