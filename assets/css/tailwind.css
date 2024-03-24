@@ -1,37 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,100..900;1,100..900&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-* {
-    font-family: 'Inter', sans-serif;
+html.dark body {
+    @apply bg-zinc-950
 }
 
-@layer base {
-    body {
-        @apply bg-zinc-925 text-zinc-50;
-    }
-}
-
-.animation-ready {
-    animation-name: fly-in;
-    animation-timing-function: ease-out;
-    animation-duration: 300ms;
-}
-
-a.router-link-exact-active {
-    @apply text-blue-700;
-}
-
-@keyframes fly-in {
-    0% {
-        opacity: 0;
-        transform: translateY(15px);
-    }
-
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
+html.light body {
+    @apply bg-white
 }

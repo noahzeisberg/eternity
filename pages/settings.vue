@@ -1,64 +1,88 @@
 <template>
-  <LiquidPage page-title="Einstellungen">
-    <LiquidOutline>
-      <LiquidCard>
+  <Page title="Einstellungen">
+    <Wrapper>
+      <UCard>
         <template #header>
+          <h1 class="font-semibold -my-2">Klasse</h1>
+        </template>
+        <UButtonGroup class="w-full">
+          <UInput class="w-full" placeholder="Klasse eingeben." v-model="preferredClass"/>
+          <UButton @click="updatePreferences" color="black">Speichern</UButton>
+        </UButtonGroup>
+      </UCard>
+
+      <UCard>
+        <template #header>
+          <h1 class="font-semibold -my-2">Einstellungen</h1>
+        </template>
+        <div class="flex flex-col gap-3">
           <div class="flex justify-between items-center">
-            <LiquidTitle>Dein Konto</LiquidTitle>
-            <NuxtLink to="/logout" class="text-blue-700 text-sm font-medium">Abmelden</NuxtLink>
+            <h1 class="font-medium">Farbschema</h1>
+            <USelectMenu :ui="{ base: 'capitalize'}" v-model="$colorMode.preference" :options="['dark', 'light', 'system']"></USelectMenu>
           </div>
-        </template>
-        <span class="w-full text-center">{{ user.email }}</span>
-      </LiquidCard>
+          <UButtonGroup class="w-1/2">
+            <UButton @click="updatePreferences" block color="black" variant="solid">Speichern</UButton>
+            <UButton to="/" block color="gray" variant="solid">Verwerfen</UButton>
+          </UButtonGroup>
+        </div>
+      </UCard>
 
-      <LiquidCard>
+      <UCard>
         <template #header>
-          <LiquidTitle>Unser Team</LiquidTitle>
+          <h1 class="font-semibold -my-2">Unser Team</h1>
         </template>
-        <AboutProfile display-name="Noah Zeisberg" task="Core Developer & System Admin" picture="noah" mail="noahonfyre@gmail.com"/>
-        <AboutProfile display-name="Dominik Bauer" task="PR Manager & Technical Writer" picture="dominik" mail="dominik.bauer.106@gmail.com"/>
-        <AboutProfile display-name="Elias Wardak" task="Coordinator & Quality Assurance" picture="elias" mail="elias.wardak@gmx.de"/>
-        <AboutProfile display-name="Luca Peter" task="Database Admin" picture="luca" mail="milchmax2000@gmail.com"/>
-        <AboutProfile display-name="Raziel Otten" task="Technical Writer" picture="raziel" mail="Ottenraziel3@gmail.com"/>
-        <AboutProfile display-name="Massih Haschemi" task="Quality Assurance" picture="massih" mail="Massih.h1@gmail.com"/>
-        <AboutProfile display-name="Enrico Sanfratello" task="Mitwirkender" picture="enrico" mail=""/>
-      </LiquidCard>
+        <TeamCard name="Noah Zeisberg" task="Core Developer & System Admin" img="noah" email="noah.zeisberg@heinrichboell.schule"></TeamCard>
+        <TeamCard name="Dominik Bauer" task="PR & Technical Writer" img="dominik" email="dominik.bauer@heinrichboell.schule"></TeamCard>
+        <TeamCard name="Raziel Otten" task="PR & QA" img="massih" email="massih.haschemi@heinrichboell.schule"></TeamCard>
+        <TeamCard name="Elias Wardak" task="Koordinator und QA" img="elias" email="elias.wardak@heinrichboell.schule"></TeamCard>
+        <TeamCard name="Luca Peter" task="Database Admin" img="luca" email="luca.peter@heinrichboell.schule"></TeamCard>
+        <TeamCard name="Raziel Otten" task="Technical Writer" img="raziel" email="raziel.otten@heinrichboell.schule"></TeamCard>
+        <TeamCard name="Enrico Sanfratello" task="Mitwirkender" img="enrico" email="enrico.sanfratello@heinrichboell.schule"></TeamCard>
+      </UCard>
 
-      <LiquidCard>
+      <UCard>
         <template #header>
-          <LiquidTitle>Open-Source <LiquidText accent>(via NPM)</LiquidText></LiquidTitle>
+          <h1 class="font-semibold -my-2">App-Informationen</h1>
         </template>
-        <NuxtLink class="hover:text-blue-700" to="https://www.npmjs.com/package/nuxt">Nuxt</NuxtLink>
-        <NuxtLink class="hover:text-blue-700" to="https://www.npmjs.com/package/@nuxtjs/tailwindcss">TailwindCSS for Nuxt</NuxtLink>
-        <NuxtLink class="hover:text-blue-700" to="https://www.npmjs.com/package/vue">Vue.js</NuxtLink>
-        <NuxtLink class="hover:text-blue-700" to="https://www.npmjs.com/package/vue-router">Vue Router</NuxtLink>
-        <NuxtLink class="hover:text-blue-700" to="https://www.npmjs.com/package/@headlessui/vue">Headless UI</NuxtLink>
-        <NuxtLink class="hover:text-blue-700" to="https://www.npmjs.com/package/@nuxt/image">Nuxt Image</NuxtLink>
-        <NuxtLink class="hover:text-blue-700" to="https://www.npmjs.com/package/jssoup">JSSoup</NuxtLink>
-        <NuxtLink class="hover:text-blue-700" to="https://www.npmjs.com/package/@nuxtjs/supabase">Supabase for Nuxt</NuxtLink>
-      </LiquidCard>
-
-      <LiquidCard>
-        <template #header>
-          <LiquidTitle>App-Informationen</LiquidTitle>
-        </template>
-        <LiquidText>Version: master@<NuxtLink :to="commitLink" class="text-zinc-400 underline">({{ commitSha }})</NuxtLink></LiquidText>
-        <LiquidText>Letztes Update: {{ commitTimeString }}</LiquidText>
+        <div class="flex flex-col">
+          <span>Letztes Update: {{ commit.time }}</span>
+          <span>Version: <ULink class="underline font-semibold" :to="commit.link">master@{{ commit.sha }}</ULink></span>
+        </div>
         <template #footer>
-          <NuxtLink to="https://github.com/noahzeisberg/eternity" class="text-zinc-400">GitHub Repository</NuxtLink>
+          <UButton class="flex gap-3 items-center" color="black" variant="solid" to="https://github.com/noahzeisberg/eternity" block>
+            <UIcon name="i-octicon-mark-github-16" dynamic></UIcon>
+            <span>GitHub Repository</span>
+          </UButton>
         </template>
-      </LiquidCard>
-    </LiquidOutline>
-  </LiquidPage>
+      </UCard>
+    </Wrapper>
+  </Page>
 </template>
 
-<script setup>
-const user = useSupabaseUser()
+<script setup lang="ts">
+import type { Ref } from "vue";
 
-const commits = await $fetch("https://api.github.com/repos/noahzeisberg/eternity/commits")
-let latestCommit = commits[0]
-let commitDate = new Date(latestCommit["commit"]["committer"]["date"])
-let commitTimeString = commitDate.getDate() + "." + commitDate.getMonth() + "." + commitDate.getFullYear()
-let commitLink = latestCommit["html_url"]
-let commitSha = latestCommit["sha"].substring(0, 7)
+const commit: Ref<{time: string, link: string, sha: string}> = ref({})
+const classCookie = useCookie("user.preferences.class")
+const preferredClass = ref(classCookie.value)
+
+const updatePreferences = () => {
+  classCookie.value = preferredClass.value
+  useToast().add({
+    title: "Änderungen gespeichert!",
+    icon: "i-heroicons-check",
+  })
+}
+
+const { data: commits } = await useLazyAsyncData("latestCommit", () => $fetch("https://api.github.com/repos/noahzeisberg/eternity/commits"))
+watch(commits, (list) => {
+  if(list === null) return
+  let latestCommit = list[0]
+  const commitDate = new Date(latestCommit["commit"]["committer"]["date"])
+  commit.value = {
+    time: commitDate.getDate() + "." + commitDate.getMonth() + "." + commitDate.getFullYear(),
+    link: latestCommit["html_url"],
+    sha: latestCommit["sha"].substring(0, 7)
+  }
+})
 </script>

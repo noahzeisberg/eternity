@@ -1,45 +1,50 @@
 <template>
-  <LiquidPage page-title="Eternity">
-    <LiquidOutline>
-      <div class="flex items-center justify-center flex-col my-6">
-        <LiquidTitle class="text-2xl">{{ getDate() }}</LiquidTitle>
-        <LiquidTitle>{{ getCurrentDayOfWeek() }}</LiquidTitle>
-      </div>
+  <Page title="Eternity">
+    <Wrapper>
+      <UContainer class="flex flex-col items-center justify-center gap-1 my-6">
+        <h1 class="text-3xl font-semibold">{{ getCurrentDayOfWeek() }}</h1>
+        <h1>{{ getDate() }}</h1>
+      </UContainer>
 
-      <LiquidCard>
+      <UCard>
         <template #header>
-          <LiquidTitle>Ordnungsdienst</LiquidTitle>
+          <h1 class="font-semibold -my-2">Ordnungsdienst</h1>
         </template>
 
-        <LiquidText>{{ student1 }} <LiquidText accent>(Besen)</LiquidText></LiquidText>
-        <LiquidText>{{ student2 }} <LiquidText accent>(Kehrblech)</LiquidText></LiquidText>
+        <Loader v-if="pending"></Loader>
 
-        <template #footer>
-          <LiquidDisclaimer accent>Zyklus: {{ cycle }} - {{ week }}</LiquidDisclaimer>
-        </template>
-      </LiquidCard>
-    </LiquidOutline>
-  </LiquidPage>
+        <div v-else class="flex flex-col gap-1">
+          <span>{{ student1 }}</span>
+          <span>{{ student2 }}</span>
+        </div>
+      </UCard>
+    </Wrapper>
+  </Page>
 </template>
 
-<script setup>
-let cycle
-const week = getCurrentWeekOfYear()
-const { students } = await $fetch("/api/students")
-
+<script setup lang="ts">
 const student1 = ref("")
 const student2 = ref("")
 
-selectStudents()
+let cycle
+const getCurrentWeek = () => {
+  const now = new Date()
+  const startOfYear = new Date(now.getFullYear(), 0, 0)
+  const diff = now.getTime() - startOfYear.getTime()
+  const oneWeekInMillis = 1000 * 60 * 60 * 24 * 7
+  return Math.floor(diff / oneWeekInMillis)
+}
 
-function selectStudents() {
+const { pending, data: students } = await useLazyAsyncData("students", () => $fetch("/api/students"))
+watch(students, (list) => {
+  if(list === null) return
   let targetLength
   let groups = []
-  if(students.length % 2 === 0) {
-    targetLength = students.length
+  if(list.length % 2 === 0) {
+    targetLength = list.length
   } else {
-    students.push(...students)
-    targetLength = students.length
+    list.push(...list)
+    targetLength = list.length
   }
 
   let even = []
@@ -47,9 +52,9 @@ function selectStudents() {
 
   for (let i = 0; i < targetLength; i++) {
     if(i % 2 === 0) {
-      even.push(students[i])
+      even.push(list[i])
     } else {
-      odd.push(students[i])
+      odd.push(list[i])
     }
   }
 
@@ -60,25 +65,17 @@ function selectStudents() {
     })
   }
 
-  if (week >= groups.length) {
-    cycle = week % groups.length
+  if (getCurrentWeek() >= groups.length) {
+    cycle = getCurrentWeek() % groups.length
   } else {
-    cycle = week
+    cycle = getCurrentWeek()
   }
 
   student1.value = groups[cycle][0]
   student2.value = groups[cycle][1]
-}
+})
 
-function getCurrentWeekOfYear() {
-  const now = new Date()
-  const startOfYear = new Date(now.getFullYear(), 0, 0)
-  const diff = now - startOfYear
-  const oneWeekInMillis = 1000 * 60 * 60 * 24 * 7
-  return Math.floor(diff / oneWeekInMillis)
-}
-
-function getDate() {
+const getDate = () => {
   const date = new Date()
   return date.getDate() + ". " + [
     "Januar",
@@ -94,9 +91,9 @@ function getDate() {
     "November",
     "Dezember"
   ][date.getMonth()] + " " + date.getFullYear()
-}
+};
 
-function getCurrentDayOfWeek() {
+const getCurrentDayOfWeek = () => {
   const today = new Date().getDay();
   const currentDay = (today + 6) % 7
   return [

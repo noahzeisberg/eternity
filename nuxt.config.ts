@@ -1,18 +1,11 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-    devtools: {
-        enabled: false
-    },
-    modules: ['@nuxtjs/tailwindcss', "@nuxt/image", '@nuxtjs/supabase'],
+    modules: ["@nuxt/image", "@nuxt/ui"],
     app: {
         head: {
             title: "Eternity Web - Active Development Preview",
-            link: [
-                { rel: 'icon', type: 'image/ico', href: '/eternity.png' },
-            ],
-            meta: [
-                { name: "referrer", content: "no-referrer" }
-            ]
+            link: [{ rel: 'icon', type: 'image/ico', href: '/eternity.png' }],
+            meta: [{ name: "referrer", content: "no-referrer" }]
         },
     },
     ssr: false,
@@ -23,5 +16,10 @@ export default defineNuxtConfig({
               base: "database"
           }
       }
+    },
+    routeRules: {
+        "/api/**": {
+            cors: true
+        }
     }
 })
