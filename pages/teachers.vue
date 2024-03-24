@@ -8,8 +8,14 @@
 
     <UTable v-else :columns="columns" :rows="filteredTeachers">
       <template #subjects-data="{ row }">
-        <div class="flex flex-col gap-1">
+        <div class="flex flex-col">
           <span v-for="item in row.subjects">{{ item }}</span>
+        </div>
+      </template>
+
+      <template #contact-data="{ row }">
+        <div class="flex gap-1">
+          <UButton :to="`mailto://${row.short.toLowerCase()}@hbs-hattersheim.de`" color="gray" icon="i-heroicons-envelope" variant="solid"></UButton>
         </div>
       </template>
     </UTable>
@@ -43,6 +49,10 @@ const columns = [
   {
     key: "subjects",
     label: "Fächer"
+  },
+  {
+    key: "contact",
+    label: "Mail"
   }
 ]
 </script>
