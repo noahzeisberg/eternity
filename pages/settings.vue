@@ -22,7 +22,7 @@
           </div>
           <UButtonGroup class="w-1/2">
             <UButton @click="updatePreferences" block color="black" variant="solid">Speichern</UButton>
-            <UButton to="/" block color="gray" variant="solid">Verwerfen</UButton>
+            <UButton to="/" block color="white" variant="solid">Verwerfen</UButton>
           </UButtonGroup>
         </div>
       </UCard>
@@ -33,7 +33,7 @@
         </template>
         <TeamCard name="Noah Zeisberg" task="Core Developer & System Admin" img="noah" email="noah.zeisberg@heinrichboell.schule"></TeamCard>
         <TeamCard name="Dominik Bauer" task="PR & Technical Writer" img="dominik" email="dominik.bauer@heinrichboell.schule"></TeamCard>
-        <TeamCard name="Raziel Otten" task="PR & QA" img="massih" email="massih.haschemi@heinrichboell.schule"></TeamCard>
+        <TeamCard name="Massih Haschemi" task="PR & QA" img="massih" email="massih.haschemi@heinrichboell.schule"></TeamCard>
         <TeamCard name="Elias Wardak" task="Koordinator und QA" img="elias" email="elias.wardak@heinrichboell.schule"></TeamCard>
         <TeamCard name="Luca Peter" task="Database Admin" img="luca" email="luca.peter@heinrichboell.schule"></TeamCard>
         <TeamCard name="Raziel Otten" task="Technical Writer" img="raziel" email="raziel.otten@heinrichboell.schule"></TeamCard>
@@ -60,9 +60,9 @@
 </template>
 
 <script setup lang="ts">
-import type { Ref } from "vue";
+import type {Ref} from "vue";
 
-const commit: Ref<{time: string, link: string, sha: string}> = ref({})
+const commit: Ref<{time: string, link: string, sha: string}> = ref({time: "", link: "", sha: ""})
 const classCookie = useCookie("user.preferences.class")
 const preferredClass = ref(classCookie.value)
 
@@ -74,15 +74,15 @@ const updatePreferences = () => {
   })
 }
 
-const { data: commits } = await useLazyAsyncData("latestCommit", () => $fetch("https://api.github.com/repos/noahzeisberg/eternity/commits"))
+const { data: commits } = await useLazyAsyncData<[{html_url: string, sha: string, commit: {committer: {date: string}}}]>("latestCommit", () => $fetch("https://api.github.com/repos/noahzeisberg/eternity/commits"))
 watch(commits, (list) => {
   if(list === null) return
   let latestCommit = list[0]
-  const commitDate = new Date(latestCommit["commit"]["committer"]["date"])
+  const commitDate = new Date(latestCommit.commit.committer.date)
   commit.value = {
     time: commitDate.getDate() + "." + commitDate.getMonth() + "." + commitDate.getFullYear(),
-    link: latestCommit["html_url"],
-    sha: latestCommit["sha"].substring(0, 7)
+    link: latestCommit.html_url,
+    sha: latestCommit.sha.substring(0, 7)
   }
 })
 </script>
