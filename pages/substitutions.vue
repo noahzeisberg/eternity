@@ -4,6 +4,9 @@
 
     <UTable v-else :columns="columns" :rows="substitutions">
       <template #type-data="{ row }"><span v-html="row.type"></span></template>
+      <template #empty-state>
+        <div class="mx-auto text-center my-12">Keine Vertretungen!</div>
+      </template>
     </UTable>
   </Page>
 </template>
