@@ -16,8 +16,9 @@
   </USlideover>
 </template>
 
-<script setup>
+<script setup lang="ts">
 const isOpen = defineModel()
+const modal = useModal()
 
 const links = [
   [
@@ -42,11 +43,6 @@ const links = [
       to: "/exams"
     },
     {
-      label: "Hausaufgaben",
-      icon: "i-heroicons-document",
-      to: "/homework"
-    },
-    {
       label: "Schüler",
       icon: "i-heroicons-user",
       to: "/students"
@@ -55,6 +51,11 @@ const links = [
       label: "Lehrer",
       icon: "i-heroicons-briefcase",
       to: "/teachers"
+    },
+    {
+      label: "Neuigkeiten",
+      icon: "i-heroicons-newspaper",
+      to: "/feed"
     },
   ], [
     {
