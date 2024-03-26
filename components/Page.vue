@@ -27,5 +27,4 @@ defineProps({
   }
 })
 const isOpen = ref(false)
-const route = useRoute().path
 </script>
