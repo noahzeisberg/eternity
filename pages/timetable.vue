@@ -2,17 +2,19 @@
   <Page title="Stundenplan">
     <Loader v-if="pending"></Loader>
 
-    <UTabs :ui="{ list: { tab: { font: 'font-semibold' } } }" v-else :items="parsedTimetable">
+    <UTabs class="w-full" :ui="{ list: { tab: { font: 'font-medium' } } }" v-else :items="parsedTimetable">
       <template #item="{ item }">
-        <Wrapper>
-          <UCard v-for="(lesson, index) in item.content">
-            <template #header>
-              <h1 class="font-semibold -my-2">{{ index+1 }}. {{ lesson.name }}</h1>
-            </template>
-            <div>Lehrer: {{ lesson.teacher }}</div>
-            <div>Raum: {{ lesson.room }}</div>
-          </UCard>
-        </Wrapper>
+        <div class="w-full flex items-center justify-center">
+          <Wrapper>
+            <UCard v-for="(lesson, index) in item.content">
+              <template #header>
+                <h1 class="font-semibold -my-2">{{ index+1 }}. {{ lesson.name }}</h1>
+              </template>
+              <div>Lehrer: {{ lesson.teacher }}</div>
+              <div>Raum: {{ lesson.room }}</div>
+            </UCard>
+          </Wrapper>
+        </div>
       </template>
     </UTabs>
   </Page>

@@ -2,7 +2,7 @@
   <Page title="Schüler">
     <Loader v-if="pending"></Loader>
 
-    <UTable v-else :rows="rows"></UTable>
+    <UTable class="w-full" v-else :rows="rows"></UTable>
   </Page>
 </template>
 

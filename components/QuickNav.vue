@@ -1,6 +1,6 @@
 <template>
-  <UCard class="rounded-none fixed bottom-0 w-full">
-    <div class="flex justify-between items-center px-3">
+  <UCard :ui="{ body: { base: 'flex justify-center items-center' } }" class="rounded-none fixed bottom-0 w-full">
+    <div class="flex justify-between items-center px-3 w-full max-w-md">
       <QuickLink icon="i-heroicons-home" to="/"></QuickLink>
       <QuickLink icon="i-heroicons-calendar-days" to="/timetable"></QuickLink>
       <QuickLink icon="i-heroicons-user" to="/students"></QuickLink>

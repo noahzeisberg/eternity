@@ -6,7 +6,7 @@
 
     <Loader v-if="pending"></Loader>
 
-    <UTable v-else :columns="columns" :rows="filteredTeachers">
+    <UTable class="w-full" v-else :columns="columns" :rows="filteredTeachers">
       <template #subjects-data="{ row }">
         <div class="flex flex-col">
           <span v-for="item in row.subjects">{{ item }}</span>

@@ -2,7 +2,7 @@
   <Page title="Vertretungsplan">
     <Loader v-if="pending"></Loader>
 
-    <UTable v-else :columns="columns" :rows="substitutions">
+    <UTable class="w-full" v-else :columns="columns" :rows="substitutions">
       <template #type-data="{ row }"><span v-html="row.type"></span></template>
       <template #empty-state>
         <div class="mx-auto text-center my-12">Keine Vertretungen!</div>
