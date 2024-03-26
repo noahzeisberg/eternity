@@ -7,7 +7,7 @@
     </div>
   </UCard>
 
-  <main class="flex flex-col">
+  <main class="flex flex-col items-center">
     <slot></slot>
 
     <QuickNav></QuickNav>
