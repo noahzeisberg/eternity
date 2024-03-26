@@ -13,7 +13,7 @@
 
         <Loader v-if="pending"></Loader>
 
-        <div v-else class="flex flex-col gap-1">
+        <div v-else class="flex flex-col">
           <span>{{ student1 }}</span>
           <span>{{ student2 }}</span>
         </div>
