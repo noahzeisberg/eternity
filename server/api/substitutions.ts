@@ -1,3 +1,6 @@
+import 'sanitize-html'
+import sanitize from "sanitize-html";
+
 export default defineEventHandler(async (event) => {
     const query = getQuery(event)
     const preferredClass = query.class?.toString()
@@ -8,12 +11,12 @@ export default defineEventHandler(async (event) => {
     let rows: any[] = []
     payload.rows.forEach(item => {
         rows.push({
-            "hour": item.data[0],
-            "class": item.data[1],
-            "subject": item.data[2],
-            "room": sanitize(item.data[3]).split(" ")[0],
+            "hour": sanitize(item.data[0]),
+            "class": sanitize(item.data[1]),
+            "subject": sanitize(item.data[2]),
+            "room": sanitize(item.data[3].split(" ")[0]),
             "teacher": sanitize(item.data[4]),
-            "type": item.data[5]
+            "type": sanitize(item.data[5])
         })
     })
 
@@ -22,8 +25,6 @@ export default defineEventHandler(async (event) => {
     }
     return rows.filter((substitution) => substitution["class"].toLowerCase().includes(preferredClass.toLowerCase()))
 })
-
-const sanitize = (string: string): string => string.replace(/<[^>]*>?/gm, "");
 
 const getPayload = async () => await $fetch<{
     payload: { rows: { data: any }[], date: string, lastUpdate: string, weekDay: string }
