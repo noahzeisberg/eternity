@@ -1,9 +1,6 @@
 export default defineEventHandler(async (event) => {
     const query = getQuery(event)
     const preferredClass = query.class?.toString()
-    if(preferredClass === null || preferredClass === undefined) {
-        return { msg: "Class not given." }
-    }
 
     const payloadWrapper = await getPayload()
     const payload = payloadWrapper.payload
@@ -20,6 +17,9 @@ export default defineEventHandler(async (event) => {
         })
     })
 
+    if(preferredClass === null || preferredClass === undefined) {
+        return rows
+    }
     return rows.filter((substitution) => substitution["class"].toLowerCase().includes(preferredClass.toLowerCase()))
 })
 
