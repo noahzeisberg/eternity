@@ -4,6 +4,11 @@
 
     <UTable class="w-full" v-else :columns="columns" :rows="substitutions">
       <template #type-data="{ row }"><span v-html="row.type"></span></template>
+      <template #class-data="{ row }">
+        <div class="flex flex-col gap-1">
+          <span v-for="c in row.class.split(',')">{{ c.trim() }}</span>
+        </div>
+      </template>
       <template #empty-state>
         <div class="mx-auto text-center my-12">Keine Vertretungen!</div>
       </template>
