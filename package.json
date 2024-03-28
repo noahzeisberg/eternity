@@ -13,7 +13,6 @@
     "@headlessui/tailwindcss": "^0.2.0",
     "@headlessui/vue": "^1.7.19",
     "@nuxt/ui": "^2.14.2",
-    "jssoup": "^0.0.15",
     "nuxt": "^3.10.3",
     "sanitize-html": "^2.13.0",
     "vue": "^3.4.19",
