@@ -12,7 +12,7 @@
           </UButtonGroup>
 
           <div class="flex items-center justify-between">
-            <UTooltip text="Zeigt die Vertretungen von jeder Klasse an." >Alle Vertretungen anzeigen</UTooltip>
+            <UTooltip text="Zeigt die Vertretungen von jeder Klasse an."><h1 class="text-sm">Alle Vertretungen anzeigen</h1></UTooltip>
             <UToggle :ui="{ active: 'bg-black dark:bg-white' }" v-model="classObject.showAll"></UToggle>
           </div>
         </div>
