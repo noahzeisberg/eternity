@@ -12,8 +12,11 @@
 </template>
 
 <script setup lang="ts">
-const classCookie = useCookie("user.preferences.class")
-const { pending, data: substitutions } = await useLazyAsyncData("substitutions", () => $fetch('/api/substitutions?class=' + classCookie.value))
+import { useStorage } from '@vueuse/core'
+const classPreferences = useStorage("class", {className: "", showAll: true})
+const apiRoute = classPreferences.value.showAll ? "/api/substitutions" : "/api/substitutions?class=" + classPreferences.value.className
+
+const { pending, data: substitutions } = await useLazyAsyncData("substitutions", () => $fetch(apiRoute))
 
 const columns = [
   {

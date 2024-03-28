@@ -5,10 +5,17 @@
         <template #header>
           <h1 class="font-semibold -my-2">Klasse</h1>
         </template>
-        <UButtonGroup class="w-full">
-          <UInput class="w-full" placeholder="Klasse eingeben." v-model="preferredClass"/>
-          <UButton @click="updatePreferences" color="black">Speichern</UButton>
-        </UButtonGroup>
+        <div class="flex flex-col gap-3">
+          <UButtonGroup class="w-full">
+            <UInput class="w-full" placeholder="Klasse eingeben." v-model="classObject.className"/>
+            <UButton @click="updatePreferences" color="black">Speichern</UButton>
+          </UButtonGroup>
+
+          <div class="flex items-center justify-between">
+            <UTooltip text="Zeigt die Vertretungen von jeder Klasse an." >Alle Vertretungen anzeigen</UTooltip>
+            <UToggle :ui="{ active: 'bg-black dark:bg-white' }" v-model="classObject.showAll"></UToggle>
+          </div>
+        </div>
       </UCard>
 
       <UCard>
@@ -61,13 +68,16 @@
 
 <script setup lang="ts">
 import type {Ref} from "vue";
+import { useStorage } from '@vueuse/core'
+
+const classObject = useStorage("class", {
+  className: "",
+  showAll: true
+})
 
 const commit: Ref<{time: string, link: string, sha: string}> = ref({time: "", link: "", sha: ""})
-const classCookie = useCookie("user.preferences.class")
-const preferredClass = ref(classCookie.value)
 
 const updatePreferences = () => {
-  classCookie.value = preferredClass.value
   useToast().add({
     title: "Änderungen gespeichert!",
     icon: "i-heroicons-check",
