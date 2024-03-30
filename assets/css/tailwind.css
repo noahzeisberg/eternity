@@ -5,7 +5,7 @@
 @tailwind utilities;
 
 * {
-    font-family: Switzer, Roboto, system-ui, sans-serif;
+    font-family: Switzer, system-ui, sans-serif;
 }
 
 html.dark body {
