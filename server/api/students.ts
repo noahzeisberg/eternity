@@ -9,7 +9,7 @@ export default defineEventHandler(async () => {
         "Lea",
         "Manuel",
         "Mikail",
-        "Asia,
+        "Asia",
         "Elina",
         "Carolina",
         "Lana",
