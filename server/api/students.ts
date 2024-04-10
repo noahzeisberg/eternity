@@ -1,6 +1,6 @@
 export default defineEventHandler(async () => {
     return [
-        "Dominik,
+        "Dominik",
         "Hussain",
         "Halil",
         "Simon",
