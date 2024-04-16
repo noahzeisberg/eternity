@@ -4,7 +4,6 @@ export default defineNuxtConfig({
     app: {
         head: {
             title: "Eternity Web - Active Development Preview",
-            link: [{ rel: 'icon', type: 'image/ico', href: '/eternity.png' }],
             meta: [{ name: "referrer", content: "no-referrer" }]
         },
     },
