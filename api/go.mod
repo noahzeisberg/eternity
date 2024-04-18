@@ -1,6 +1,6 @@
 module api
 
-go 1.22
+go 1.22.0
 
 require (
 	github.com/bytedance/sonic v1.9.1
