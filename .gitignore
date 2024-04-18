@@ -25,3 +25,6 @@ logs
 .env
 .env.*
 !.env.example
+
+# Built Go application
+api/main.exe
