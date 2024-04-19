@@ -1,14 +1,13 @@
 package main
 
 import (
-	"slices"
 	"time"
 )
 
 type SubstitutionPlan struct {
 	Date          time.Time      `json:"date"`
 	LastUpdate    time.Time      `json:"last_update"`
-	Affected      []string       `json:"affected"`
+	Affected      bool           `json:"affected"`
 	Substitutions []Substitution `json:"substitutions"`
 }
 
@@ -21,16 +20,7 @@ type Substitution struct {
 	Type    string   `json:"type"`
 }
 
-func (substitutionPlan SubstitutionPlan) IsAffected(class string) bool {
-	return slices.Contains(substitutionPlan.Affected, class)
-}
-
-func (substitutionPlan SubstitutionPlan) GetSubstitutions(class string) []Substitution {
-	var substitutions []Substitution
-	for _, substitution := range substitutionPlan.Substitutions {
-		if slices.Contains(substitution.Classes, class) {
-			substitutions = append(substitutions, substitution)
-		}
-	}
-	return substitutions
+type ChoreList struct {
+	Cycle    int      `json:"cycle"`
+	Students []string `json:"students"`
 }
