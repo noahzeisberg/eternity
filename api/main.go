@@ -5,6 +5,8 @@ import (
 	"log/slog"
 	"net/http"
 	"os"
+	"strconv"
+	"time"
 )
 
 var (
@@ -15,9 +17,12 @@ var (
 )
 
 func main() {
-	engine := gin.Default()
+	engine := gin.New()
 	engine.GET("/substitutions", func(c *gin.Context) {
-		payload, err := GetSubstitutionPlan()
+		t := c.Query("t")
+		add, err := strconv.Atoi(t)
+		datetime := time.Now().AddDate(0, 0, add)
+		payload, err := GetSubstitutionPlan(datetime)
 		if err != nil {
 			c.JSON(500, gin.H{"error": err.Error()})
 			return
@@ -25,8 +30,7 @@ func main() {
 		c.JSON(200, payload)
 	})
 	engine.GET("/chores", func(c *gin.Context) {
-		firstStudent, secondStudent := GetChores()
-		c.JSON(200, []string{firstStudent, secondStudent})
+		c.JSON(200, GetChores())
 	})
 	err := engine.Run()
 	if err != nil {
