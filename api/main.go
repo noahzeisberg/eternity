@@ -12,6 +12,7 @@ import (
 var (
 	Client = &http.Client{Transport: &http.Transport{}}
 	Logger = slog.New(slog.NewTextHandler(os.Stderr, nil))
+	Host   = "localhost:8080"
 	School = "hbs-hattersheim"
 	Class  = "08G2"
 )
