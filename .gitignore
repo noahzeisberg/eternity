@@ -28,3 +28,4 @@ logs
 
 # Built Go application
 api/main.exe
+.vercel
