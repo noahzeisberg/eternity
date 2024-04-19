@@ -2,7 +2,7 @@ package main
 
 import "time"
 
-func GetChores() (string, string) {
+func GetChores() ChoreList {
 	students := []string{
 		"Dominik",
 		"Hussain",
@@ -56,7 +56,13 @@ func GetChores() (string, string) {
 	}
 	cycle = weekOfYear % len(groups)
 
-	return groups[cycle][0], groups[cycle][1]
+	return ChoreList{
+		Cycle: cycle,
+		Students: []string{
+			groups[cycle][0],
+			groups[cycle][1],
+		},
+	}
 }
 
 func WeekOfYear() int {
