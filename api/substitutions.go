@@ -8,14 +8,13 @@ import (
 	"io"
 	"net/http"
 	"regexp"
+	"slices"
 	"strconv"
 	"strings"
 	"time"
 )
 
-func GetSubstitutionPlan() (SubstitutionPlan, error) {
-	datetime := time.Now()
-
+func GetSubstitutionPlan(datetime time.Time) (SubstitutionPlan, error) {
 	requestBody, err := json.Marshal(map[string]any{
 		"formatName":                 "Vetr_Kla",
 		"date":                       datetime.Format("20060102"),
@@ -96,18 +95,22 @@ func GetSubstitutionPlan() (SubstitutionPlan, error) {
 	for _, row := range payload.Payload.Rows {
 		data := row.Data
 
+		classes := strings.Split(SanitizeHTML(data[1]), ", ")
+
+		if !slices.Contains(classes, Class) {
+			continue
+		}
+
 		var substitutionType string
 		if data[5] == "" {
 			substitutionType = "Vertretung"
 		} else {
 			substitutionType = data[5]
 		}
-		if err != nil {
-			return SubstitutionPlan{}, err
-		}
+
 		substitutions = append(substitutions, Substitution{
 			Lesson:  SanitizeHTML(data[0]),
-			Classes: strings.Split(SanitizeHTML(data[1]), ", "),
+			Classes: classes,
 			Subject: SanitizeHTML(data[2]),
 			Rooms:   strings.Split(SanitizeHTML(data[3]), ", "),
 			Teacher: strings.Split(SanitizeHTML(data[4]), ", "),
@@ -118,16 +121,9 @@ func GetSubstitutionPlan() (SubstitutionPlan, error) {
 	substitutionPlan := SubstitutionPlan{
 		Date:          date,
 		LastUpdate:    lastUpdate,
-		Affected:      payload.Payload.AffectedElements.List,
+		Affected:      slices.Contains(payload.Payload.AffectedElements.List, Class),
 		Substitutions: substitutions,
 	}
-
-	if substitutionPlan.IsAffected(Class) {
-		substitutionPlan.Substitutions = substitutionPlan.GetSubstitutions(Class)
-		return substitutionPlan, nil
-	}
-
-	substitutionPlan.Substitutions = []Substitution{}
 
 	return substitutionPlan, nil
 }
