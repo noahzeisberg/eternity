@@ -33,7 +33,7 @@ func main() {
 	engine.GET("/chores", func(c *gin.Context) {
 		c.JSON(200, GetChores())
 	})
-	err := engine.Run()
+	err := engine.Run(Host)
 	if err != nil {
 		panic(err)
 	}
