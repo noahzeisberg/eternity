@@ -1,6 +1,7 @@
-package main
+package api
 
 import (
+	"api/utils"
 	"bytes"
 	"encoding/json"
 	"github.com/bytedance/sonic"
@@ -14,7 +15,19 @@ import (
 	"time"
 )
 
-func GetSubstitutionPlan(datetime time.Time) (SubstitutionPlan, error) {
+func Handler(w http.ResponseWriter, r *http.Request) {
+	handler := utils.NewHandler(w, r)
+	client := http.Client{Transport: &http.Transport{}}
+
+	t, err := strconv.Atoi(r.FormValue("t"))
+	class := r.FormValue("class")
+	if err != nil {
+		return
+	}
+
+	datetime := time.Now()
+	datetime.AddDate(0, 0, t)
+
 	requestBody, err := json.Marshal(map[string]any{
 		"formatName":                 "Vetr_Kla",
 		"date":                       datetime.Format("20060102"),
@@ -56,36 +69,37 @@ func GetSubstitutionPlan(datetime time.Time) (SubstitutionPlan, error) {
 		"showUnheraldedExams":        false,
 	})
 	if err != nil {
-		return SubstitutionPlan{}, err
+		handler.RespondError(err)
+		return
 	}
-	Logger.Info("Prepared body.")
 
-	request, err := http.NewRequest("POST", "https://ajax.webuntis.com/WebUntis/monitor/substitution/data?school="+School, bytes.NewBuffer(requestBody))
+	request, err := http.NewRequest("POST", "https://ajax.webuntis.com/WebUntis/monitor/substitution/data?school=hbs-hattersheim", bytes.NewBuffer(requestBody))
 	if err != nil {
-		return SubstitutionPlan{}, err
+		handler.RespondError(err)
+		return
 	}
 
 	request.Header.Set("Content-Type", "application/json")
 	request.Close = true
 
-	res, err := Client.Do(request)
+	res, err := client.Do(request)
 	if err != nil {
-		return SubstitutionPlan{}, err
+		handler.RespondError(err)
+		return
 	}
 
-	Logger.Info("Retrieved substitutions.")
 	body, err := io.ReadAll(res.Body)
 	if err != nil {
-		return SubstitutionPlan{}, err
+		handler.RespondError(err)
+		return
 	}
-	Logger.Info("Read body.")
 
 	payload := UntisPayload{}
 	err = sonic.Unmarshal(body, &payload)
 	if err != nil {
-		return SubstitutionPlan{}, err
+		handler.RespondError(err)
+		return
 	}
-	Logger.Info("Parsed body.")
 
 	date, err := time.Parse("20060102", strconv.Itoa(payload.Payload.Date))
 	lastUpdate, err := time.Parse("02.01.2006 15:04:05", payload.Payload.LastUpdate)
@@ -97,7 +111,7 @@ func GetSubstitutionPlan(datetime time.Time) (SubstitutionPlan, error) {
 
 		classes := strings.Split(SanitizeHTML(data[1]), ", ")
 
-		if !slices.Contains(classes, Class) {
+		if !slices.Contains(classes, class) {
 			continue
 		}
 
@@ -121,11 +135,11 @@ func GetSubstitutionPlan(datetime time.Time) (SubstitutionPlan, error) {
 	substitutionPlan := SubstitutionPlan{
 		Date:          date,
 		LastUpdate:    lastUpdate,
-		Affected:      slices.Contains(payload.Payload.AffectedElements.List, Class),
+		Affected:      slices.Contains(payload.Payload.AffectedElements.List, class),
 		Substitutions: substitutions,
 	}
 
-	return substitutionPlan, nil
+	handler.Respond(substitutionPlan)
 }
 
 func SanitizeHTML(str string) string {
@@ -146,4 +160,20 @@ type UntisPayload struct {
 			List []string `json:"1"`
 		} `json:"affectedElements"`
 	} `json:"payload"`
+}
+
+type SubstitutionPlan struct {
+	Date          time.Time      `json:"date"`
+	LastUpdate    time.Time      `json:"last_update"`
+	Affected      bool           `json:"affected"`
+	Substitutions []Substitution `json:"substitutions"`
+}
+
+type Substitution struct {
+	Lesson  string   `json:"lesson"`
+	Classes []string `json:"classes"`
+	Subject string   `json:"subject"`
+	Rooms   []string `json:"room"`
+	Teacher []string `json:"teacher"`
+	Type    string   `json:"type"`
 }
