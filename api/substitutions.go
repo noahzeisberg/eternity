@@ -1,7 +1,6 @@
 package api
 
 import (
-	"api/utils"
 	"bytes"
 	"encoding/json"
 	"github.com/bytedance/sonic"
@@ -16,7 +15,7 @@ import (
 )
 
 func Handler(w http.ResponseWriter, r *http.Request) {
-	handler := utils.NewHandler(w, r)
+	handler := ResponseHandler{w: w, r: r}
 	client := http.Client{Transport: &http.Transport{}}
 
 	t, err := strconv.Atoi(r.FormValue("t"))
@@ -176,4 +175,33 @@ type Substitution struct {
 	Rooms   []string `json:"room"`
 	Teacher []string `json:"teacher"`
 	Type    string   `json:"type"`
+}
+
+type ResponseHandler struct {
+	w http.ResponseWriter
+	r *http.Request
+}
+
+func (h ResponseHandler) Respond(object any) {
+	b, err := json.Marshal(object)
+	if err != nil {
+		return
+	}
+	_, err = h.w.Write(b)
+	if err != nil {
+		return
+	}
+}
+
+func (h ResponseHandler) RespondError(err error) {
+	b, err := json.Marshal(map[string]string{
+		"error": err.Error(),
+	})
+	if err != nil {
+		return
+	}
+	_, err = h.w.Write(b)
+	if err != nil {
+		return
+	}
 }
