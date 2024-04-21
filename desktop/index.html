@@ -2,49 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Loading...</title>
-
+    <title>Eternity - Desktop Edition</title>
     <script src="https://cdn.tailwindcss.com"></script>
-
     <style>
         @import url('https://noahzeisberg.github.io/fontkit/source.css');
-
-        * {
-            font-family: "DM Sans", "Inter", sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-
-        ::-webkit-scrollbar {
-            display: none;
-        }
-
-        body {
-            height: 100vh;
-            width: 100vw;
-        }
-
-        #eternity-desktop-app-header {
-            color: white;
-            height: 45px;
-            background: black;
-            width: 100vw;
-            -webkit-app-region: drag;
-            -webkit-user-select: none;
-            padding-left: 16px;
-        }
-
-        #eternity-desktop-app-content {
-            height: calc(100% - 45px);
-            width: 100vw;
-        }
+        * { font-family: "DM Sans", "Inter", sans-serif; }
+        ::-webkit-scrollbar { display: none; }
     </style>
 </head>
-<body>
-    <header id="eternity-desktop-app-header">ETERNITY</header>
-    <webview src="https://github.com/noahzeisberg" id="eternity-desktop-app-content"></webview>
+<body class="w-screen h-screen flex flex-col">
+    <header style="-webkit-user-select: none; -webkit-app-region: drag; height: 40px;" class="flex items-center px-6 bg-black text-white font-black text-lg">ETERNITY</header>
+    <webview style="height: calc(100vh - 40px)" src="https://eternityweb.vercel.app"></webview>
 </body>
 </html>
