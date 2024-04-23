@@ -8,4 +8,5 @@ export default defineNuxtConfig({
         meta: [{ name: "referrer", content: "no-referrer" }]
       },
     },
+    ssr: false
 })
