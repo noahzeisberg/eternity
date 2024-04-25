@@ -2,8 +2,8 @@ const { app, BrowserWindow } = require('electron')
 
 const createWindow = () => {
     const window = new BrowserWindow({
-        width: 1000,
-        height: 600,
+        width: 900,
+        height: 650,
         title: "Eternity - Desktop Edition",
         titleBarStyle: 'hidden',
         titleBarOverlay: {
