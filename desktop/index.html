@@ -6,9 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Eternity - Desktop Edition</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        const frontendURL = "https://eternityweb.vercel.app/"
-    </script>
     <style>
         @import url("https://noahzeisberg.github.io/fontkit/source.css");
 
@@ -22,13 +19,7 @@
     </style>
 </head>
 <body class="w-screen h-screen flex flex-col">
-    <header style="user-select: none; -webkit-app-region: drag; height: 40px;" class="flex items-center px-6 bg-black text-white font-black text-lg">ETERNITY</header>
-    <webview style="height: calc(100vh - 40px)" useragent="eternity/desktop"></webview>
-    <script>
-        const webview = document.querySelector('webview')
-        webview.addEventListener('dom-ready', () => {
-            webview.loadURL(frontendURL)
-        })
-    </script>
+    <header style="user-select: none; -webkit-app-region: drag; height: 42px;" class="flex items-center px-6 bg-black text-white font-black text-lg">ETERNITY</header>
+    <webview src="https://eternityweb.vercel.app/" style="height: calc(100vh - 42px)" useragent="eternity/desktop"></webview>
 </body>
 </html>
