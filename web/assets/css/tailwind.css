@@ -7,5 +7,10 @@
 
 * {
     font-family: "DM Sans", Inter, sans-serif;
+    @apply text-zinc-900 dark:text-zinc-50;
+}
+
+body {
+    @apply bg-zinc-50 dark:bg-zinc-950
 }
 
