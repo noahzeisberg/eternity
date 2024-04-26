@@ -33,8 +33,12 @@
               <CalendarIcon></CalendarIcon>
             </SidebarItem>
 
-            <SidebarItem name="Kalender" to="/calendar">
-              <CalendarIcon></CalendarIcon>
+            <SidebarItem name="Klasse" to="/class">
+              <PersonIcon></PersonIcon>
+            </SidebarItem>
+
+            <SidebarItem name="Hausaufgaben" to="/homework">
+              <FileIcon></FileIcon>
             </SidebarItem>
 
             <SidebarItem name="Einstellungen" to="/settings">
@@ -57,7 +61,7 @@
 
 <script setup lang="ts">
 import SidebarItem from "~/components/sidebar/SidebarItem.vue";
-import { HamburgerMenuIcon, HomeIcon, CircleBackslashIcon, CalendarIcon, GearIcon, ExitIcon } from "@radix-icons/vue";
+import { HamburgerMenuIcon, HomeIcon, CircleBackslashIcon, CalendarIcon, PersonIcon, FileIcon, GearIcon, ExitIcon } from "@radix-icons/vue";
 
 const pageName = useRoute().path.replace("/", "").toUpperCase()
 </script>
