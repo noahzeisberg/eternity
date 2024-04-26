@@ -21,6 +21,7 @@
 
 <script setup lang="ts">
 import { toast } from 'vue-sonner'
+import _ from "lodash"
 
 const email = ref("")
 const password = ref("")
@@ -41,7 +42,7 @@ const user = useSupabaseUser()
 watch(user, () => {
   if (user.value?.email) {
     const nameParts = user.value.email.split("@")[0].split(".")
-    toast.success("Erfolgreich als " + nameParts[0].replace(/\b\w/, (c) => c.toUpperCase()) + " " + nameParts[1].replace(/\b\w/, (c) => c.toUpperCase()) + " eingeloggt!")
+    toast.success("Erfolgreich als " + _.capitalize(nameParts[0]) + " " + _.capitalize(nameParts[1]) + " eingeloggt!")
     return navigateTo("/")
   }
 })
