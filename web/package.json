@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "build": "nuxt build",
-    "dev": "nuxt dev",
+    "dev": "nuxt dev --host",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
@@ -12,6 +12,7 @@
   "dependencies": {
     "@radix-icons/vue": "^1.0.0",
     "@types/sanitize-html": "^2.11.0",
+    "@vueuse/core": "^10.9.0",
     "@vueuse/nuxt": "^10.9.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
@@ -22,7 +23,8 @@
     "tailwind-merge": "^2.3.0",
     "tailwindcss-animate": "^1.0.7",
     "vue": "^3.4.21",
-    "vue-router": "^4.3.0"
+    "vue-router": "^4.3.0",
+    "vue-sonner": "^1.1.2"
   },
   "devDependencies": {
     "@nuxt/image": "^1.5.0",
