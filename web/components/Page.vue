@@ -20,7 +20,7 @@
             <SheetDescription>Hier ist eine Übersicht von den verschiedenen Bereichen.</SheetDescription>
           </SheetHeader>
           <Separator class="my-3"></Separator>
-          <div class="flex flex-col">
+          <div class="flex flex-col gap-0.5">
             <SidebarItem name="Übersicht" to="/">
               <HomeIcon></HomeIcon>
             </SidebarItem>
