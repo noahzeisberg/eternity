@@ -20,7 +20,7 @@
             <SheetDescription>Hier ist eine Übersicht von den verschiedenen Bereichen.</SheetDescription>
           </SheetHeader>
           <Separator class="my-3"></Separator>
-          <SheetFooter class="flex flex-col">
+          <div class="flex flex-col">
             <SidebarItem name="Übersicht" to="/">
               <HomeIcon></HomeIcon>
             </SidebarItem>
@@ -44,7 +44,7 @@
             <SidebarItem name="Ausloggen" to="/logout">
               <ExitIcon></ExitIcon>
             </SidebarItem>
-          </SheetFooter>
+          </div>
         </SheetContent>
       </Sheet>
     </nav>
