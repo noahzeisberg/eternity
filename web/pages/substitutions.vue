@@ -1,63 +1,56 @@
 <template>
   <Page>
-    <Tabs default-value="class">
-      <TabsList class="w-full">
-        <TabsTrigger value="class" class="w-full">Klassenbasiert</TabsTrigger>
-        <TabsTrigger value="full" class="w-full">Volle Ansicht</TabsTrigger>
-      </TabsList>
+    <Card>
+      <CardHeader>
+        <CardTitle>Vertretungsplan für den {{ substitutions ? parseDate(substitutions.date) : "Tag" }}</CardTitle>
+        <CardDescription>Bitte wäle deine Klasse aus, um akkurate Informationen zu erhalten.</CardDescription>
+      </CardHeader>
 
-      <TabsContent value="class">
-        <Card>
-          <CardHeader>
-            <CardTitle>Vertretungsplan</CardTitle>
-            <CardDescription>Bitte wäle deine Klasse aus, um akkurate Informationen zu erhalten.</CardDescription>
-          </CardHeader>
+      <CardContent>
+        <Input v-model="preferredClass"></Input>
+        <h1 class="text-sm text-zinc-500 dark:text-zinc-400 text-center mt-2">Zuletzt aktualisiert: {{ substitutions?.lastUpdate }}</h1>
+      </CardContent>
+    </Card>
 
-          <CardContent>
-            <Input v-model="preferredClass"></Input>
-            <CardDescription class="text-center mt-2">Angaben ohne Gewähr.</CardDescription>
-          </CardContent>
-        </Card>
-
-        <template v-for="substitution in substitutions">
-          <Card v-if="substitution.class.includes(preferredClass)">
-            <CardHeader>
-              {{ removeHTMLTag(substitution.hour) }}
-              {{ removeHTMLTag(substitution.class) }}
-              {{ removeHTMLTag(substitution.subject) }}
-              {{ removeHTMLTag(substitution.room) }}
-              {{ removeHTMLTag(substitution.teacher) }}
-              {{ removeHTMLTag(substitution.type === "" ? "Vertretung" : substitution.type) }}
-            </CardHeader>
-          </Card>
-        </template>
-      </TabsContent>
-
-      <TabsContent value="full" class="flex flex-col gap-3">
-        <Card v-for="substitution in substitutions">
-          <CardHeader>
+    <template v-for="substitution in substitutions?.rows">
+      <Card v-if="substitution.class.includes(preferredClass)">
+        <CardHeader class="flex-row items-center gap-6 px-8">
+          <div class="text-3xl font-black">
             {{ removeHTMLTag(substitution.hour) }}
-            {{ removeHTMLTag(substitution.class) }}
-            {{ removeHTMLTag(substitution.subject) }}
-            {{ removeHTMLTag(substitution.room) }}
-            {{ removeHTMLTag(substitution.teacher) }}
-            {{ removeHTMLTag(substitution.type === "" ? "Vertretung" : substitution.type) }}
-          </CardHeader>
-        </Card>
-        <h1 class="text-sm text-zinc-500 dark:text-zinc-400 text-center">Angaben ohne Gewähr.</h1>
-      </TabsContent>
-    </Tabs>
+          </div>
+
+          <div>
+            <h1 class="font-bold">
+              {{ removeHTMLTag(substitution.type === "" ? "Vertretung" : substitution.type) }}
+            </h1>
+            <span>
+              <TeacherProfile :short="removeHTMLTag(substitution.teacher)"></TeacherProfile>
+              in
+              {{ removeHTMLTag(substitution.room) }}
+            </span>
+          </div>
+        </CardHeader>
+      </Card>
+    </template>
+    <h1 class="text-sm text-zinc-500 dark:text-zinc-400 text-center">Angaben ohne Gewähr.</h1>
   </Page>
 </template>
 
 <script setup lang="ts">
 import {useLocalStorage} from "@vueuse/core";
-import {Tabs, TabsList, TabsContent, TabsTrigger} from "~/components/ui/tabs";
 
 const preferredClass = useLocalStorage("preferredClass", "8G2")
 const { data: substitutions } = useLazyAsyncData("substitutions", () => $fetch("/api/substitutions"))
 
 const removeHTMLTag = (input: string) => {
   return input.replace(/<\/?[^>]+>/g, "");
+}
+
+const parseDate = (input: string) => {
+  const year = parseInt(input.toString().substring(0, 4))
+  const month = parseInt(input.toString().substring(4, 6)) - 1
+  const day = parseInt(input.toString().substring(6, 8))
+  const d = new Date(year, month, day)
+  return d.getDate().toString() + "." + d.getMonth().toString() + "." + d.getFullYear().toString()
 }
 </script>
