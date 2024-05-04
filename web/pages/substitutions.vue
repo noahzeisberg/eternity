@@ -15,12 +15,12 @@
     <template v-for="substitution in substitutions?.rows">
       <Card v-if="substitution.class.includes(preferredClass)">
         <CardHeader class="flex-row items-center gap-6 px-8">
-          <div class="text-3xl font-black">
+          <div class="text-3xl font-semibold">
             {{ removeHTMLTag(substitution.hour) }}
           </div>
 
           <div>
-            <h1 class="font-bold">
+            <h1 class="font-semibold">
               {{ removeHTMLTag(substitution.type === "" ? "Vertretung" : substitution.type) }}
             </h1>
             <span>
