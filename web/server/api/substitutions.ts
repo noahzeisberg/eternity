@@ -16,7 +16,11 @@ export default defineEventHandler(async (event) => {
             "type": sanitize(item.data[5])
         })
     })
-    return rows
+    return {
+        "date": payload.date,
+        "lastUpdate": payload.lastUpdate,
+        "rows": rows
+    }
 })
 
 const getPayload = async () => await $fetch<{
