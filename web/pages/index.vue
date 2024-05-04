@@ -15,13 +15,6 @@
         </CardDescription>
       </CardHeader>
     </Card>
-
-    <Card>
-      <CardHeader>
-        <CardTitle>Dienste</CardTitle>
-        <CardDescription></CardDescription>
-      </CardHeader>
-    </Card>
   </Page>
 </template>
 
