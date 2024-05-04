@@ -2,9 +2,6 @@ import 'sanitize-html'
 import sanitize from "sanitize-html";
 
 export default defineEventHandler(async (event) => {
-    const query = getQuery(event)
-    const preferredClass = query.class?.toString()
-
     const payloadWrapper = await getPayload()
     const payload = payloadWrapper.payload
 
@@ -14,16 +11,12 @@ export default defineEventHandler(async (event) => {
             "hour": sanitize(item.data[0]),
             "class": sanitize(item.data[1]),
             "subject": sanitize(item.data[2]),
-            "room": sanitize(item.data[3].split(" ")[0]),
+            "room": sanitize(item.data[3]),
             "teacher": sanitize(item.data[4]),
             "type": sanitize(item.data[5])
         })
     })
-
-    if(preferredClass === null || preferredClass === undefined) {
-        return rows
-    }
-    return rows.filter((substitution) => substitution["class"].toLowerCase().includes(preferredClass.toLowerCase()))
+    return rows
 })
 
 const getPayload = async () => await $fetch<{
