@@ -1,7 +1,7 @@
 import 'sanitize-html'
 import sanitize from "sanitize-html";
 
-export default defineEventHandler(async (event) => {
+export default defineEventHandler(async () => {
     const payloadWrapper = await getPayload()
     const payload = payloadWrapper.payload
 
