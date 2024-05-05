@@ -15,18 +15,16 @@
     <template v-for="substitution in substitutions?.rows">
       <Card v-if="substitution.class.includes(preferredClass)">
         <CardHeader class="flex-row items-center gap-6 px-8">
-          <div class="text-3xl font-semibold">
-            {{ removeHTMLTag(substitution.hour) }}
-          </div>
+          <div class="text-xl font-semibold">{{ removeHTMLTag(substitution.hour) }}</div>
 
           <div>
             <h1 class="font-semibold">
               {{ removeHTMLTag(substitution.type === "" ? "Vertretung" : substitution.type) }}
+              <span class="text-zinc-500 dark:text-zinc-400 font-normal">({{ removeHTMLTag(substitution.subject) }})</span>
             </h1>
             <span>
               <TeacherProfile :short="removeHTMLTag(substitution.teacher)"></TeacherProfile>
-              in
-              {{ removeHTMLTag(substitution.room) }}
+              <span> in {{ removeHTMLTag(substitution.room) }}</span>
             </span>
           </div>
         </CardHeader>
