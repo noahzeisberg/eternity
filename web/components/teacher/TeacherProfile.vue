@@ -1,7 +1,7 @@
 <template>
   <Popover>
     <PopoverTrigger @click="handleOpen" class="underline">{{ short }}</PopoverTrigger>
-    <PopoverContent v-if="teacher" class="w-full">
+    <PopoverContent v-if="teacher">
       <h1>
         {{ teacher?.name }}
         <span class="text-zinc-500 dark:text-zinc-400">({{ teacher?.short }})</span>

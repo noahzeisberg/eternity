@@ -29,11 +29,7 @@ export default defineEventHandler(async (): Promise<string[]> => {
         groups.push([even[i], odd[i]])
     }
 
-    if (getCurrentWeek() >= groups.length) {
-        cycle = getCurrentWeek() % groups.length
-    } else {
-        cycle = getCurrentWeek()
-    }
+    cycle = getCurrentWeek() % groups.length
 
     return groups[cycle]
 })

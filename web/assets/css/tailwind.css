@@ -1,17 +1,13 @@
-@import url('https://noahzeisberg.github.io/fontkit/source.css');
+@import url("https://noahzeisberg.github.io/fontkit/source.css");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 @tailwind variants;
 
-* {
-    font-family: "DM Sans", Inter, sans-serif;
+html {
+    font-family: "Inter", sans-serif;
     @apply text-zinc-900 dark:text-zinc-50;
-}
-
-.invert {
-    @apply text-zinc-50 dark:text-zinc-900;
 }
 
 body {

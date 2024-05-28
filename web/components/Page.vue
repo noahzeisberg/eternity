@@ -5,7 +5,7 @@
         <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="size-8 mx-1.5">
           <path fill-rule="evenodd" clip-rule="evenodd" d="M11 8L3 16H11L11 8ZM13 16L21 8L13 8V16Z" fill="currentColor"/>
         </svg>
-        <h1 class="text-xs font-black">{{ pageName === "" ? "ETERNITY" : pageName }}</h1>
+        <h1 class="text-xs font-bold">ETERNITY</h1>
       </div>
 
       <Sheet>
