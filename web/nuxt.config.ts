@@ -4,7 +4,7 @@ export default defineNuxtConfig({
   modules: ["@nuxtjs/tailwindcss", "shadcn-nuxt", "@nuxtjs/supabase"],
   app: {
       head: {
-        title: "Eternity Web - Active Development Preview",
+        title: "Eternity — School Organisation System",
         meta: [{ name: "referrer", content: "no-referrer" }]
       },
     },
