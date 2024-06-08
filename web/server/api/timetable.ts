@@ -5,8 +5,8 @@ export default defineEventHandler(async () => {
             lessons: [
                 { name: "Physik", teacher: "STN", room: 129 },
                 { name: "Physik", teacher: "STN", room: 129 },
-                { name: "Geschichte", teacher: "???", room: 221 },
-                { name: "Geschichte", teacher: "???", room: 221 },
+                { name: "Geschichte", teacher: "HHL", room: 221 },
+                { name: "Geschichte", teacher: "HHL", room: 221 },
                 { name: "Deutsch", teacher: "PLC", room: 221 },
                 { name: "Deutsch", teacher: "PLC", room: 221 },
             ]
@@ -14,8 +14,8 @@ export default defineEventHandler(async () => {
         {
             day: "Dienstag",
             lessons: [
-                { name: "Kunst", teacher: "RSH", room: 64 },
-                { name: "Kunst", teacher: "RSH", room: 64 },
+                { name: "Kunst", teacher: "RSH", room: 46 },
+                { name: "Kunst", teacher: "RSH", room: 46 },
                 { name: "Chemie", teacher: "PTT", room: 146 },
                 { name: "Chemie", teacher: "PTT", room: 146 },
                 { name: "Englisch", teacher: "FTH", room: 221 },
@@ -36,8 +36,8 @@ export default defineEventHandler(async () => {
         {
             day: "Donnerstag",
             lessons: [
-                { name: "PoWi", teacher: "LPF", room: 221 },
-                { name: "PoWi", teacher: "LPF", room: 221 },
+                { name: "Politik und Wirtschaft", teacher: "LPF", room: 221 },
+                { name: "Politik und Wirtschaft", teacher: "LPF", room: 221 },
                 { name: "Religion", teacher: "PLC", room: 218 },
                 { name: "Religion", teacher: "PLC", room: 218 },
                 { name: "Deutsch", teacher: "PLC", room: 221 },

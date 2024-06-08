@@ -22,6 +22,8 @@
 </template>
 
 <script setup lang="ts">
+import SubstitutionDisplay from "~/components/widgets/SubstitutionDisplay.vue";
+
 let today = await requestSubstitution(new Date())
 let tomorrow = await requestSubstitution(new Date(Date.now() + 24 * 60 * 60 * 1000))
 

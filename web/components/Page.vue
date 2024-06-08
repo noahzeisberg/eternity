@@ -2,8 +2,9 @@
   <div>
     <nav class="bg-white dark:bg-black border-b border-zinc-100 dark:border-zinc-800 flex justify-between items-center w-full p-3">
       <div class="flex items-center gap-2">
-        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="size-8 mx-1.5">
-          <path fill-rule="evenodd" clip-rule="evenodd" d="M11 8L3 16H11L11 8ZM13 16L21 8L13 8V16Z" fill="currentColor"/>
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="size-10 -my-3">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M3.5 16L11.5 8L11.5 16H9.68182V12.3636L6.04545 16H3.5Z" fill="currentColor"/>
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M20.5 8L12.5 16L12.5 8L14.3182 8L14.3182 11.6364L17.9545 8L20.5 8Z" fill="currentColor"/>
         </svg>
         <h1 class="text-xs font-bold">ETERNITY</h1>
       </div>
@@ -35,7 +36,7 @@
               </svg>
             </SidebarItem>
 
-            <SidebarItem name="Kalender" to="/calendar">
+            <SidebarItem name="Stundenplan" to="/timetable">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5m-9-6h.008v.008H12v-.008ZM12 15h.008v.008H12V15Zm0 2.25h.008v.008H12v-.008ZM9.75 15h.008v.008H9.75V15Zm0 2.25h.008v.008H9.75v-.008ZM7.5 15h.008v.008H7.5V15Zm0 2.25h.008v.008H7.5v-.008Zm6.75-4.5h.008v.008h-.008v-.008Zm0 2.25h.008v.008h-.008V15Zm0 2.25h.008v.008h-.008v-.008Zm2.25-4.5h.008v.008H16.5v-.008Zm0 2.25h.008v.008H16.5V15Z" />
               </svg>
