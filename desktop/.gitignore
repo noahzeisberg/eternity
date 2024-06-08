@@ -14,3 +14,5 @@ logs
 .env
 .env.*
 !.env.example
+
+out/
