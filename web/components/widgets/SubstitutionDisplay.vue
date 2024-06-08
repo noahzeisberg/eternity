@@ -26,6 +26,7 @@
 
 <script setup lang="ts">
 import TeacherProfile from "~/components/widgets/TeacherProfile.vue";
+import sanitize from "sanitize-html";
 
 defineProps({
   substitutions: {
@@ -54,6 +55,6 @@ function parseDate(input: string) {
 }
 
 function removeHTMLTag(input: string) {
-  return input.replace(/<\/?[^>]+>/g, "")
+  return sanitize(input.replace(/<\/?[^>]+>/g, ""))
 }
 </script>
