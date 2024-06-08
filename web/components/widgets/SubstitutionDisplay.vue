@@ -47,7 +47,7 @@ defineProps({
 
 function parseDate(input: string) {
   const year = parseInt(input.toString().substring(0, 4))
-  const month = parseInt(input.toString().substring(4, 6)) - 1
+  const month = parseInt(input.toString().substring(4, 6))
   const day = parseInt(input.toString().substring(6, 8))
   const d = new Date(year, month, day)
   return d.getDate().toString() + "." + d.getMonth().toString() + "." + d.getFullYear().toString()
