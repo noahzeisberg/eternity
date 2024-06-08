@@ -52,6 +52,8 @@
 </template>
 
 <script setup lang="ts">
+import TeacherProfile from "~/components/widgets/TeacherProfile.vue";
+
 const { data: students } = useLazyAsyncData("students", () => $fetch("/api/students"))
 const { data: teachers } = useLazyAsyncData("teachers", () => $fetch("/api/teachers"))
 
