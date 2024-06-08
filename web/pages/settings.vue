@@ -3,24 +3,11 @@
     <Card>
       <CardHeader>
         <CardTitle>Profil</CardTitle>
-        <CardDescription>Passe dein Profil an.</CardDescription>
+        <CardDescription>{{ user?.email }}</CardDescription>
       </CardHeader>
-      <CardFooter class="flex-col">
-
-      </CardFooter>
-    </Card>
-
-    <Card>
-      <CardHeader>
-        <CardTitle>Allgemein</CardTitle>
-        <CardDescription>Test</CardDescription>
-      </CardHeader>
-      <CardFooter class="flex-col">
-        <div class="flex justify-between w-full">
-          <Label for="enabled">Wert</Label>
-          <Switch></Switch>
-        </div>
-      </CardFooter>
+      <CardContent class="flex flex-col gap-2">
+        <Button @click="supabase.auth.signOut" class="w-full">Abmelden</Button>
+      </CardContent>
     </Card>
 
     <Card>
@@ -42,4 +29,7 @@
 <script setup lang="ts">
 import {Switch} from "~/components/ui/switch";
 import Contributor from "~/components/widgets/Contributor.vue";
+
+const supabase = useSupabaseClient()
+const user = useSupabaseUser()
 </script>

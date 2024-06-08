@@ -1,6 +1,6 @@
 <template>
   <Page>
-    <Tabs :default-value="new Date().getDay()-1">
+    <Tabs :default-value="0">
       <TabsList class="w-full">
         <TabsTrigger class="w-full" v-for="(day, index) in timetable" :value="index">{{ day.day.substring(0, 2) }}</TabsTrigger>
       </TabsList>
