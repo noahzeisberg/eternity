@@ -1,6 +1,3 @@
-import {SymbolKind} from "vscode-languageserver-types";
-
-
 export default defineEventHandler(async (event) => {
     return [
         {
