@@ -25,6 +25,8 @@
 </template>
 
 <script setup lang="ts">
+import TeacherProfile from "~/components/widgets/TeacherProfile.vue";
+
 defineProps({
   substitutions: {
     required: true,
