@@ -70,7 +70,7 @@
       </Sheet>
     </nav>
 
-    <div class="flex flex-col gap-3 p-3">
+    <div class="flex flex-col gap-2 p-2">
       <slot></slot>
     </div>
   </div>
